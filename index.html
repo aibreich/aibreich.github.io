@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aiden Eichenour — Product &amp; UX Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="shared.css" />
+    <style>
+      /* ── Hero ── */
+      .hero {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: clamp(80px, 10vw, 100px) clamp(20px, 5vw, 48px)
+          clamp(48px, 6vw, 60px);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg-grid {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image: linear-gradient(
+            rgba(91, 140, 255, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(91, 140, 255, 0.05) 1px, transparent 1px);
+        background-size: 64px 64px;
+      }
+      .hero-blob {
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: clamp(300px, 55vw, 700px);
+        height: clamp(300px, 55vw, 700px);
+        background: radial-gradient(
+          ellipse at center,
+          rgba(91, 140, 255, 0.16) 0%,
+          transparent 68%
+        );
+        z-index: 0;
+        animation: blobPulse 9s ease-in-out infinite;
+      }
+      .hero-blob2 {
+        position: absolute;
+        bottom: -80px;
+        left: -120px;
+        width: clamp(240px, 42vw, 520px);
+        height: clamp(240px, 42vw, 520px);
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 107, 107, 0.1) 0%,
+          transparent 68%
+        );
+        z-index: 0;
+        animation: blobPulse 12s ease-in-out infinite reverse;
+      }
+      .hero-top,
+      .hero-bottom {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: clamp(10px, 1.2vw, 11px);
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: clamp(24px, 4vw, 36px);
+        animation: fadeIn 0.6s 0.1s both;
+      }
+      .eyebrow-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex-shrink: 0;
+        animation: pulse-dot 2.5s ease-in-out infinite;
+      }
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.7);
+        }
+      }
+      .eyebrow-bar {
+        display: block;
+        width: 28px;
+        height: 1px;
+        background: var(--accent);
+        flex-shrink: 0;
+      }
+      .eyebrow-status {
+        color: var(--text);
+      }
+      .eyebrow-sep {
+        color: var(--border);
+        margin: 0 2px;
+      }
+      .eyebrow-school {
+        color: var(--accent);
+      }
+
+      .hero-title {
+        font-family: var(--font-display);
+        font-size: clamp(44px, 8.5vw, 120px);
+        font-weight: 800;
+        line-height: 0.93;
+        letter-spacing: -0.03em;
+        margin: 0;
+      }
+      .hero-title .line {
+        display: block;
+        overflow: hidden;
+      }
+      .hero-title .line span {
+        display: block;
+        opacity: 0;
+        transform: translateY(100%);
+        animation: slideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .hero-title .line:nth-child(1) span {
+        animation-delay: 0.18s;
+      }
+      .hero-title .line:nth-child(2) span {
+        animation-delay: 0.3s;
+      }
+      .hero-title .line:nth-child(3) span {
+        animation-delay: 0.42s;
+      }
+      /* WCAG: keep visible color — stroke alone is transparent to screen readers */
+      .outline-text {
+        -webkit-text-stroke: 2px var(--text);
+        color: var(--text);
+      }
+      .accent-word {
+        color: var(--accent);
+      }
+
+      .hero-sub-row {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .hero-desc {
+        max-width: 460px;
+        font-size: clamp(14px, 1.8vw, 15px);
+        color: var(--muted);
+        line-height: 1.8;
+        animation: fadeIn 0.8s 0.6s both;
+      }
+      .hero-desc strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+      .hero-stats {
+        display: flex;
+        gap: clamp(24px, 4vw, 40px);
+        animation: fadeIn 0.8s 0.75s both;
+        flex-shrink: 0;
+      }
+      .stat {
+        text-align: center;
+        cursor: default;
+      }
+      .stat-num {
+        font-family: var(--font-display);
+        font-size: clamp(28px, 4vw, 36px);
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        transition: color 0.22s, -webkit-text-stroke-color 0.22s;
+      }
+      .stat:hover .stat-num {
+        color: transparent;
+        -webkit-text-stroke: 2px var(--accent);
+      }
+      .stat-label {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 5px;
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 24px;
+        right: clamp(20px, 4vw, 48px);
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        animation: fadeIn 1s 1.2s both;
+      }
+      .scroll-hint::before {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 36px;
+        background: linear-gradient(to bottom, transparent, var(--muted));
+        animation: scrollLine 2s ease-in-out infinite;
+      }
+
+      /* ── Projects ── */
+      .projects-section {
+        padding: clamp(64px, 8vw, 100px) clamp(20px, 5vw, 48px);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .project-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        position: relative;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: border-color 0.3s, box-shadow 0.35s;
+      }
+      .project-img-wrap {
+        overflow: hidden;
+        position: relative;
+        border-radius: 16px 16px 0 0;
+      }
+      .project-card:hover {
+        border-color: var(--accent);
+        box-shadow: 0 20px 60px rgba(91, 140, 255, 0.15);
+      }
+      .project-card.wide {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .project-card.compact .project-img {
+        aspect-ratio: 4/3;
+      }
+      .project-card.compact .project-info {
+        padding: 14px 16px;
+        gap: 5px;
+      }
+      .project-card.compact .project-name {
+        font-size: 15px;
+      }
+      .project-card.compact .project-desc {
+        font-size: 12px;
+        line-height: 1.55;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .project-card.compact .project-cta {
+        font-size: 12px;
+        margin-top: 2px;
+      }
+      .project-card.compact .project-process {
+        display: none;
+      }
+      .vibe-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .project-img {
+        width: 100%;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.75) brightness(0.92);
+        transition: filter 0.4s, transform 0.55s;
+      }
+      .project-card:hover .project-img {
+        filter: saturate(1) brightness(1);
+        transform: scale(1.04);
+      }
+      .project-card.wide .project-img {
+        aspect-ratio: auto;
+        height: 100%;
+        min-height: 320px;
+      }
+      .project-card.wide .project-img-wrap {
+        min-height: 320px;
+        border-radius: 16px 0 0 16px;
+      }
+      .project-tag {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(13, 15, 20, 0.85);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 4px 12px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        z-index: 2;
+        pointer-events: none;
+      }
+      .project-info {
+        padding: clamp(16px, 2.5vw, 24px);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .project-card.wide .project-info {
+        padding: clamp(24px, 4vw, 40px);
+        justify-content: center;
+      }
+      .project-meta {
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .project-name {
+        font-family: var(--font-display);
+        font-size: clamp(16px, 2vw, 28px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      .project-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .project-process {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .project-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-top: 4px;
+        transition: gap 0.2s;
+      }
+      .project-card:hover .project-cta {
+        gap: 13px;
+      }
+      .project-cta svg {
+        transition: transform 0.2s;
+      }
+      .project-card:hover .project-cta svg {
+        transform: translateX(4px);
+      }
+
+      /* ── About ── */
+      .about-section {
+        background: var(--surface);
+        padding: clamp(64px, 8vw, 100px) clamp(20px, 5vw, 48px);
+      }
+      .about-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(32px, 5vw, 64px);
+        align-items: start;
+      }
+      .about-text p {
+        font-size: clamp(14px, 1.8vw, 15px);
+        line-height: 1.82;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+      .about-text p:last-child {
+        margin-bottom: 0;
+      }
+      .about-text strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+      /* WCAG: lift effect instead of transparent-text on hover */
+      .about-highlight {
+        border-left: 3px solid var(--accent);
+        padding: 2px 0 2px 20px;
+        margin: 24px 0;
+        font-family: var(--font-display);
+        font-size: clamp(15px, 2vw, 17px);
+        font-weight: 600;
+        line-height: 1.5;
+        color: var(--text);
+        display: block;
+        border-radius: 0 8px 8px 0;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.3s, border-color 0.3s;
+      }
+      .about-highlight:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(91, 140, 255, 0.15);
+        border-color: var(--accent2);
+      }
+      .about-interests {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+      .interest-pill {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 7px 14px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .about-visual {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .about-photo-wrap {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 0 60px var(--accent-glow);
+      }
+      .about-photo-wrap img {
+        width: 100%;
+        display: block;
+        filter: saturate(0.85);
+        transition: filter 0.4s;
+      }
+      .about-photo-wrap:hover img {
+        filter: saturate(1);
+      }
+      .about-photo-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          to top,
+          rgba(13, 15, 20, 0.94) 0%,
+          transparent 100%
+        );
+        padding: 32px 20px 16px;
+      }
+      .about-photo-caption strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 16px;
+        color: var(--text);
+        font-weight: 700;
+        margin-bottom: 2px;
+      }
+      .about-photo-caption span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .about-mini-stats {
+        display: flex;
+        gap: 10px;
+      }
+      .mini-stat {
+        flex: 1;
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 10px;
+        text-align: center;
+        cursor: default;
+      }
+      .mini-stat-num {
+        font-family: var(--font-display);
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        transition: color 0.22s, -webkit-text-stroke-color 0.22s;
+      }
+      .mini-stat:hover .mini-stat-num {
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--accent);
+      }
+      .mini-stat-label {
+        font-size: 9px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 5px;
+        line-height: 1.3;
+      }
+      .capabilities-block {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 20px;
+      }
+      .capabilities-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+      .skills-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .skills-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .skill-pill {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 7px 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--text);
+        white-space: nowrap;
+        transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      }
+      .skill-pill:hover {
+        border-color: var(--accent);
+        background: rgba(91, 140, 255, 0.08);
+        transform: translateY(-2px);
+      }
+      .skill-pill-icon {
+        font-size: 13px;
+        line-height: 1;
+      }
+
+      /* ── Process ── */
+      .process-section {
+        padding: clamp(64px, 8vw, 100px) clamp(20px, 5vw, 48px);
+        background: var(--bg);
+        overflow: hidden;
+      }
+      .process-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .process-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 40px;
+        margin-bottom: clamp(40px, 6vw, 72px);
+        flex-wrap: wrap;
+      }
+      .process-intro {
+        max-width: 340px;
+        font-size: clamp(14px, 1.8vw, 15px);
+        color: var(--muted);
+        line-height: 1.75;
+        padding-bottom: 6px;
+      }
+      .process-timeline {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        position: relative;
+      }
+      .timeline-line {
+        position: absolute;
+        top: 28px;
+        left: 12.5%;
+        right: 12.5%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          var(--accent) 0%,
+          rgba(91, 140, 255, 0.2) 100%
+        );
+        z-index: 0;
+      }
+      .timeline-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        padding: 0 12px;
+      }
+      .timeline-node {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--surface2);
+        border: 1.5px solid var(--accent);
+        position: relative;
+        flex-shrink: 0;
+        margin-bottom: 28px;
+        box-shadow: 0 0 24px rgba(91, 140, 255, 0.2);
+        transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      }
+      .timeline-node svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--accent);
+        transition: color 0.3s;
+      }
+      .timeline-step:hover .timeline-node {
+        background: var(--accent);
+        transform: scale(1.12);
+        box-shadow: 0 0 40px rgba(91, 140, 255, 0.45);
+      }
+      .timeline-step:hover .timeline-node svg {
+        color: #fff;
+      }
+      .timeline-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: clamp(16px, 2vw, 24px) clamp(14px, 2vw, 20px);
+        width: 100%;
+        transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      }
+      .timeline-step:hover .timeline-card {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(91, 140, 255, 0.1);
+      }
+      .timeline-step-label {
+        font-family: var(--font-display);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        color: var(--accent);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+      .timeline-title {
+        font-family: var(--font-display);
+        font-size: clamp(16px, 2vw, 20px);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+        color: var(--text);
+      }
+      .timeline-desc {
+        font-size: clamp(12px, 1.5vw, 13px);
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 16px;
+      }
+      .timeline-methods {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .timeline-methods span {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 3px 9px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      /* ── Contact ── */
+      /* WCAG FIX: #5b8cff gives white only 3.16:1 — #3d5fc4 gives 5.78:1 ✅ */
+      .contact-section {
+        background: #3d5fc4;
+        text-align: center;
+        padding: clamp(64px, 8vw, 100px) clamp(20px, 5vw, 48px);
+      }
+      .contact-section .section-label {
+        color: rgba(255, 255, 255, 0.85);
+        justify-content: center;
+      }
+      .contact-section .section-label::before {
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .contact-title {
+        font-family: var(--font-display);
+        font-size: clamp(36px, 7.5vw, 100px);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 0.95;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .contact-title .outline {
+        -webkit-text-stroke: 3px #fff;
+        color: transparent;
+        transition: color 0.3s, -webkit-text-stroke-color 0.3s;
+      }
+      .contact-section:hover .contact-title .outline {
+        color: #fff;
+        -webkit-text-stroke-color: transparent;
+      }
+      /* WCAG FIX: was rgba(255,255,255,0.72) = ~2.3:1 — now 0.92 = ~4.7:1 ✅ */
+      .contact-sub {
+        font-size: clamp(15px, 2vw, 17px);
+        color: rgba(255, 255, 255, 0.92);
+        margin: 0 auto 44px;
+        max-width: 420px;
+        line-height: 1.65;
+      }
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      /* ── Responsive tablet ── */
+      @media (max-width: 1024px) {
+        .projects-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+        .vibe-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 12px;
+        }
+        /* Wide card collapses vertically — revert border-radius to top corners */
+        .project-card.wide {
+          grid-template-columns: 1fr;
+        }
+        .project-card.wide .project-img-wrap {
+          min-height: auto;
+          border-radius: 16px 16px 0 0;
+        }
+        .project-card.wide .project-img {
+          height: 280px;
+          min-height: auto;
+        }
+        .about-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+        .process-timeline {
+          grid-template-columns: 1fr 1fr;
+          gap: 28px;
+        }
+        .timeline-line {
+          display: none;
+        }
+        .process-header {
+          flex-direction: column;
+          gap: 16px;
+        }
+        .process-intro {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-title {
+          font-size: clamp(38px, 11vw, 72px);
+        }
+        .hero-eyebrow {
+          font-size: 10px;
+          gap: 8px;
+        }
+        .hero-sub-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+        }
+        .hero-stats {
+          gap: 28px;
+        }
+        .scroll-hint {
+          display: none;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        .vibe-grid {
+          grid-template-columns: 1fr;
+        }
+        .project-card.wide .project-img {
+          height: 220px;
+        }
+        .project-card.wide .project-info {
+          padding: 24px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .about-visual {
+          order: -1;
+        }
+        .about-highlight {
+          font-size: 15px;
+        }
+        .process-timeline {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .timeline-step {
+          align-items: flex-start;
+          flex-direction: row;
+          gap: 16px;
+        }
+        .timeline-node {
+          margin-bottom: 0;
+          flex-shrink: 0;
+          width: 44px;
+          height: 44px;
+        }
+        .timeline-card {
+          padding: 18px 16px;
+        }
+        .process-header {
+          margin-bottom: 40px;
+        }
+        .contact-links {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .contact-btn {
+          justify-content: center;
+        }
+        .section-title {
+          font-size: clamp(26px, 7vw, 48px);
+          margin-bottom: 40px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .hero-title {
+          font-size: clamp(32px, 10vw, 52px);
+        }
+        .about-mini-stats {
+          flex-direction: column;
+        }
+        .mini-stat {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Aiden Eichenour — home"
+        >AE.</a
+      >
+      <ul class="nav-links">
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+        <li>
+          <a
+            href="Eichenour_Aiden_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="resume-btn"
+            aria-label="Download Resume PDF"
+            ><svg
+              width="13"
+              height="13"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M8 1v9M4 6l4 4 4-4M2 13h12"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+            >Résumé</a
+          >
+        </li>
+      </ul>
+      <button
+        type="button"
+        class="nav-hamburger"
+        id="nav-hamburger"
+        aria-expanded="false"
+        aria-controls="nav-drawer"
+        aria-label="Open navigation menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+      <a href="#projects">Work</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Let's Talk</a>
+    </nav>
+
+    <main id="main-content">
+      <!-- ── Hero ── -->
+      <section class="hero">
+        <div class="hero-bg-grid" aria-hidden="true"></div>
+        <div class="hero-blob" aria-hidden="true"></div>
+        <div class="hero-blob2" aria-hidden="true"></div>
+        <div class="hero-top">
+          <p class="hero-eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            <span class="eyebrow-bar" aria-hidden="true"></span>
+            <span class="eyebrow-status">Available for opportunities</span>
+            <span class="eyebrow-sep" aria-hidden="true"
+              >&nbsp;&mdash;&nbsp;</span
+            >
+            <span class="eyebrow-school">MS HCI @ Indiana University</span>
+          </p>
+          <h1 class="hero-title">
+            <span class="line"><span>Designing</span></span>
+            <span class="line"
+              ><span class="outline-text">experiences</span></span
+            >
+            <span class="line"
+              ><span
+                >that <span class="accent-word">move</span> people.</span
+              ></span
+            >
+          </h1>
+        </div>
+        <div class="hero-bottom">
+          <div class="hero-sub-row">
+            <p class="hero-desc">
+              I'm <strong>Aiden Eichenour</strong> — a UX and Product Designer
+              with a front-end development background. I started in web
+              development, discovered HCI, and never looked back. I advocate for
+              users while building things that actually work.
+            </p>
+            <div class="hero-stats" aria-label="Quick stats">
+              <div class="stat">
+                <div class="stat-num" aria-label="9 plus projects">9+</div>
+                <div class="stat-label">Projects</div>
+              </div>
+              <div class="stat">
+                <div class="stat-num">MS</div>
+                <div class="stat-label">HCI Candidate</div>
+              </div>
+              <div class="stat">
+                <div class="stat-num">IUI</div>
+                <div class="stat-label">Indiana Univ.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-hint" aria-hidden="true">Scroll</div>
+      </section>
+
+      <!-- ── Marquee ── -->
+      <div class="marquee-section" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> UX Research
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Interaction Design
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Prototyping
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Front-End Development
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Accessibility
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Figma
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Usability Testing
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Product Strategy
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> UX Research
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Interaction Design
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Prototyping
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Front-End Development
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Accessibility
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Figma
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Usability Testing
+          </div>
+          <div class="marquee-item">
+            <span class="marquee-dot"></span> Product Strategy
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Projects ── -->
+      <section id="projects" class="projects-section">
+        <div style="max-width: 1200px; margin: 0 auto">
+          <p class="section-label reveal">Selected Work</p>
+          <h2 class="section-title reveal">Projects that<br />tell a story.</h2>
+          <div class="projects-grid">
+            <a href="mindful.html" class="project-card wide reveal">
+              <span class="project-tag">Case Study</span>
+              <div class="project-img-wrap">
+                <img
+                  src="https://framerusercontent.com/images/vwbtXa9cuGo9Y0WHLV9cALU4RHw.png"
+                  alt="Mindful app screens showing the scheduling interface"
+                  class="project-img"
+                />
+              </div>
+              <div class="project-info">
+                <p class="project-meta">
+                  Mobile App &middot; Student Productivity
+                </p>
+                <h3 class="project-name">Mindful</h3>
+                <p class="project-desc">
+                  A team-designed app helping graduate students follow through
+                  on their schedules — built through two rounds of interviews,
+                  affinity mapping, and iterative usability testing.
+                </p>
+                <div class="project-process">
+                  <span class="process-tag">User Research</span>
+                  <span class="process-tag">Affinity Mapping</span>
+                  <span class="process-tag">Prototyping</span>
+                  <span class="process-tag">Usability Testing</span>
+                </div>
+                <span class="project-cta"
+                  >View Case Study
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    /></svg
+                ></span>
+              </div>
+            </a>
+
+            <a href="macrotrack.html" class="project-card reveal">
+              <span class="project-tag">Personal Project</span>
+              <div class="project-img-wrap">
+                <img
+                  src="https://framerusercontent.com/images/JgrNovgMtEjLTj9FS031T5eAk9U.png"
+                  alt="Macro Track nutrition tracking app interface"
+                  class="project-img"
+                />
+              </div>
+              <div class="project-info">
+                <p class="project-meta">Nutrition Tracking &middot; Web App</p>
+                <h3 class="project-name">Macro Track</h3>
+                <p class="project-desc">
+                  A personal web app to track daily food intake using Firebase —
+                  built to deepen front-end skills with a clean,
+                  distraction-free interface.
+                </p>
+                <div class="project-process">
+                  <span class="process-tag">UI Design</span>
+                  <span class="process-tag">Firebase</span>
+                  <span class="process-tag">Front-End Dev</span>
+                </div>
+                <span class="project-cta"
+                  >View Project
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    /></svg
+                ></span>
+              </div>
+            </a>
+
+            <a href="childlifezone.html" class="project-card reveal">
+              <span class="project-tag">Team Project</span>
+              <div class="project-img-wrap">
+                <img
+                  src="https://framerusercontent.com/images/uQpjXb5BjchDjdWugMr3MWVivE.png"
+                  alt="Child Life Zone website for Riley Children's Hospital"
+                  class="project-img"
+                />
+              </div>
+              <div class="project-info">
+                <p class="project-meta">
+                  Healthcare &middot; Riley Children's Hospital
+                </p>
+                <h3 class="project-name">Child Life Zone</h3>
+                <p class="project-desc">
+                  An HTML landing page for Riley Children's Hospital connecting
+                  the Child Life Zone with patients and families through
+                  accessible, audience-appropriate content.
+                </p>
+                <div class="project-process">
+                  <span class="process-tag">Web Development</span>
+                  <span class="process-tag">Content Strategy</span>
+                  <span class="process-tag">Accessibility</span>
+                </div>
+                <span class="project-cta"
+                  >View Project
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    /></svg
+                ></span>
+              </div>
+            </a>
+
+            <a
+              href="lumenplanner.html"
+              class="project-card wide reveal"
+            >
+              <span class="project-tag">Case Study</span>
+              <div class="project-img-wrap">
+                <img
+                  src="LP_PhysicalPrototype.jpg"
+                  alt="Lumen Planner physical prototype and companion app diagram"
+                  class="project-img"
+                  style="object-fit: contain; background: #fff; padding: 24px"
+                />
+              </div>
+              <div class="project-info">
+                <p class="project-meta">
+                  Medical Device &middot; Physical-Digital UX
+                </p>
+                <h3 class="project-name">Lumen Planner</h3>
+                <p class="project-desc">
+                  A smart weekly medicine organizer bridging physical habit
+                  formation with a companion app — covering device form factor,
+                  LED feedback, and QR-based onboarding.
+                </p>
+                <div class="project-process">
+                  <span class="process-tag">Design Research</span>
+                  <span class="process-tag">System Design</span>
+                  <span class="process-tag">Physical Prototyping</span>
+                  <span class="process-tag">App UX</span>
+                </div>
+                <span class="project-cta"
+                  >View on Behance
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    /></svg
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <!-- ── Vibe Coding ── -->
+          <div style="margin-top: clamp(48px, 6vw, 80px)">
+            <p class="section-label reveal">Vibe Coding</p>
+            <h2
+              class="section-title reveal"
+              style="margin-bottom: clamp(16px, 2vw, 32px)"
+            >
+              Built for fun.<br />Shipped for real.
+            </h2>
+            <p
+              class="reveal"
+              style="
+                font-size: clamp(14px, 1.8vw, 15px);
+                color: var(--muted);
+                line-height: 1.8;
+                max-width: 560px;
+                margin-bottom: clamp(32px, 4vw, 48px);
+              "
+            >
+              Side projects built quickly and independently — each one exploring
+              a browser API or solving a real daily problem. All vanilla HTML,
+              CSS, and JavaScript.
+            </p>
+            <div class="vibe-grid">
+              <a href="puppywatch.html" class="project-card compact reveal">
+                <div class="project-img-wrap">
+                  <img
+                    src="https://framerusercontent.com/images/vRBoLnejJNhBNPTBIfluw5ziaX8.png"
+                    alt="Puppy Watch activity tracker interface"
+                    class="project-img"
+                  />
+                </div>
+                <div class="project-info">
+                  <p class="project-meta">Pet Care &middot; Offline App</p>
+                  <h3 class="project-name">Puppy Watch</h3>
+                  <p class="project-desc">
+                    One-tap activity logging and potty countdown timer. Fully
+                    offline via localStorage.
+                  </p>
+                  <span class="project-cta"
+                    >View Project
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      /></svg
+                  ></span>
+                </div>
+              </a>
+
+              <a href="audvis.html" class="project-card compact reveal">
+                <div class="project-img-wrap">
+                  <img
+                    src="https://framerusercontent.com/images/nvvdOpHsQnslyk4reoVQjszRTnI.png"
+                    alt="AudVis real-time audio visualizer"
+                    class="project-img"
+                  />
+                </div>
+                <div class="project-info">
+                  <p class="project-meta">Creative Tech &middot; Audio Viz</p>
+                  <h3 class="project-name">AudVis</h3>
+                  <p class="project-desc">
+                    Real-time audio visualizer using Web Audio API and HTML5
+                    Canvas. Mic, file, and stream input.
+                  </p>
+                  <span class="project-cta"
+                    >View Project
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      /></svg
+                  ></span>
+                </div>
+              </a>
+
+              <a href="noter.html" class="project-card compact reveal">
+                <div class="project-img-wrap">
+                  <img
+                    src="https://framerusercontent.com/images/M9KcGI4kWeHxaZew20YQVrxssgU.png"
+                    alt="Noter speech-to-notecard transcription app"
+                    class="project-img"
+                  />
+                </div>
+                <div class="project-info">
+                  <p class="project-meta">Productivity &middot; Voice Notes</p>
+                  <h3 class="project-name">Noter</h3>
+                  <p class="project-desc">
+                    Live speech-to-notecard transcription with PDF export. Built
+                    for lectures and meetings.
+                  </p>
+                  <span class="project-cta"
+                    >View Project
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      /></svg
+                  ></span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── About ── -->
+      <section id="about" class="about-section">
+        <div class="about-inner">
+          <div class="about-grid">
+            <div class="about-text-col reveal">
+              <p class="section-label">About Me</p>
+              <h2 class="section-title" style="margin-bottom: 20px">
+                Web developer<br />first. UX designer<br />at heart.
+              </h2>
+              <div class="about-text">
+                <p>
+                  I'm <strong>Aiden Eichenour</strong> — I started in web
+                  development and design during my undergraduate studies at
+                  <strong>Indiana University Indianapolis</strong>. By my senior
+                  year I realized I didn't just want to build things — I wanted
+                  to understand why people use them the way they do. That
+                  curiosity led me to pursue my
+                  <strong>MS in Human-Computer Interaction</strong>.
+                </p>
+                <p>
+                  What drives me is the gap between a user's intention and their
+                  experience. I grew up naturally helping people troubleshoot
+                  technology, and HCI gave me the vocabulary and framework to do
+                  that at scale.
+                </p>
+                <blockquote class="about-highlight">
+                  "I don't just want to build things — I want to understand why
+                  people use them the way they do."
+                </blockquote>
+                <p>
+                  Outside of design work I'm an avid bowler — chasing a perfect
+                  300 having hit 290 once — and I play golf when I can. I follow
+                  the NFL closely (AFC side), enjoy gaming, and spend a lot of
+                  time with my boxer, <strong>Arya</strong>. Family is a major
+                  motivation behind everything I do professionally.
+                </p>
+              </div>
+              <div class="about-interests" aria-label="Interests">
+                <span class="interest-pill">&#x1F3B3; Bowling</span>
+                <span class="interest-pill">&#x26F3; Golf</span>
+                <span class="interest-pill">&#x1F3C8; NFL / AFC</span>
+                <span class="interest-pill">&#x1F3AE; Gaming</span>
+                <span class="interest-pill">&#x1F436; Arya the Boxer</span>
+              </div>
+            </div>
+
+            <div class="about-visual reveal">
+              <div class="about-photo-wrap">
+                <img
+                  src="https://framerusercontent.com/images/7sBJeCK22vsGW7UKuzRrdoOz3A.png"
+                  alt="Aiden Eichenour, MS HCI Candidate at Indiana University"
+                />
+                <div class="about-photo-caption">
+                  <strong>Aiden Eichenour</strong>
+                  <span>MS HCI Candidate &middot; Indiana University</span>
+                </div>
+              </div>
+              <div class="about-mini-stats" aria-label="Stats">
+                <div class="mini-stat">
+                  <div class="mini-stat-num" aria-label="9 plus projects">
+                    9+
+                  </div>
+                  <div class="mini-stat-label">Projects</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-num">MS</div>
+                  <div class="mini-stat-label">HCI Degree</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-num">290</div>
+                  <div class="mini-stat-label">Bowling Best</div>
+                </div>
+              </div>
+              <div class="capabilities-block">
+                <p class="capabilities-label">Capabilities</p>
+                <div class="skills-rows">
+                  <div class="skills-row">
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x1F50D;</span
+                      >
+                      UX Research</span
+                    >
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x1F3A8;</span
+                      >
+                      UI Design</span
+                    >
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x26A1;</span
+                      >
+                      Prototyping</span
+                    >
+                  </div>
+                  <div class="skills-row">
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x267F;</span
+                      >
+                      Accessibility</span
+                    >
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x1F5FA;&#xFE0F;</span
+                      >
+                      Product Thinking</span
+                    >
+                  </div>
+                  <div class="skills-row">
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x1F4BB;</span
+                      >
+                      Front-End Dev</span
+                    >
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x1F9EA;</span
+                      >
+                      Usability Testing</span
+                    >
+                  </div>
+                  <div class="skills-row">
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x1F4D0;</span
+                      >
+                      Figma</span
+                    >
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x1F525;</span
+                      >
+                      Firebase</span
+                    >
+                    <span class="skill-pill"
+                      ><span class="skill-pill-icon" aria-hidden="true"
+                        >&#x1F310;</span
+                      >
+                      HTML / CSS / JS</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Process ── -->
+      <section id="process" class="process-section">
+        <div class="process-inner">
+          <div class="process-header">
+            <div class="reveal">
+              <p class="section-label">How I Work</p>
+              <h2 class="section-title" style="margin-bottom: 0">
+                My design<br />process.
+              </h2>
+            </div>
+            <p class="process-intro reveal">
+              Every project is different — but the way I approach problems stays
+              consistent. Research first, assumptions last.
+            </p>
+          </div>
+          <div class="process-timeline">
+            <div class="timeline-line" aria-hidden="true"></div>
+
+            <div class="timeline-step reveal">
+              <div class="timeline-node" aria-hidden="true">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              </div>
+              <div class="timeline-card">
+                <div class="timeline-step-label">01</div>
+                <h3 class="timeline-title">Discover</h3>
+                <p class="timeline-desc">
+                  I start with people — not assumptions. User interviews,
+                  competitive audits, and heuristic reviews help me understand
+                  the real problem before touching a single wireframe.
+                </p>
+                <div class="timeline-methods">
+                  <span>User Interviews</span><span>Competitive Audit</span
+                  ><span>Heuristic Review</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step reveal">
+              <div class="timeline-node" aria-hidden="true">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="6" />
+                  <circle cx="12" cy="12" r="2" />
+                </svg>
+              </div>
+              <div class="timeline-card">
+                <div class="timeline-step-label">02</div>
+                <h3 class="timeline-title">Define</h3>
+                <p class="timeline-desc">
+                  Synthesizing messy research into a clear opportunity. Affinity
+                  mapping, personas, and journey maps turn scattered insights
+                  into a problem statement everyone can anchor to.
+                </p>
+                <div class="timeline-methods">
+                  <span>Affinity Mapping</span><span>Personas</span
+                  ><span>Journey Maps</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step reveal">
+              <div class="timeline-node" aria-hidden="true">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                  <path d="M2 2l7.586 7.586" />
+                  <circle cx="11" cy="11" r="2" />
+                </svg>
+              </div>
+              <div class="timeline-card">
+                <div class="timeline-step-label">03</div>
+                <h3 class="timeline-title">Design</h3>
+                <p class="timeline-desc">
+                  From rough sketches to interactive prototypes — I move fast,
+                  iterate often, and keep the user in the room even when they're
+                  not physically present. Low-fi first, visual polish earns its
+                  place.
+                </p>
+                <div class="timeline-methods">
+                  <span>Sketching</span><span>Wireframing</span
+                  ><span>Hi-Fi Prototyping</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step reveal">
+              <div class="timeline-node" aria-hidden="true">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <div class="timeline-card">
+                <div class="timeline-step-label">04</div>
+                <h3 class="timeline-title">Deliver</h3>
+                <p class="timeline-desc">
+                  Usability testing, design handoff, and implementation support.
+                  The job isn't done when the file is done — I stay involved
+                  until the right experience actually ships.
+                </p>
+                <div class="timeline-methods">
+                  <span>Usability Testing</span><span>Design Handoff</span
+                  ><span>Implementation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Contact ── -->
+      <section id="contact" class="contact-section">
+        <p class="section-label">Let's Connect</p>
+        <h2 class="contact-title">
+          Let's build<br /><span class="outline">something.</span>
+        </h2>
+        <p class="contact-sub">
+          Open to full-time UX, UI, and Product Designer roles. I'd love to hear
+          about what you're building.
+        </p>
+        <div class="contact-links">
+          <a
+            href="/cdn-cgi/l/email-protection#9ffef6fdedfaf6fcf7dff6eab1fafbea"
+            class="contact-btn"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Send an Email
+          </a>
+          <a
+            href="Eichenour_Aiden_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="contact-btn contact-btn-outline"
+            download
+            >📄 Download Résumé</a
+          >
+          <a
+            href="https://www.linkedin.com/in/aiden-eichenour-b56518235"
+            target="_blank"
+            rel="noopener"
+            class="contact-btn contact-btn-outline"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            LinkedIn
+          </a>
+          <a
+            href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer"
+            target="_blank"
+            rel="noopener"
+            class="contact-btn contact-btn-outline"
+            >Behance</a
+          >
+          <a
+            href="https://medium.com/@aibreich"
+            target="_blank"
+            rel="noopener"
+            class="contact-btn contact-btn-outline"
+            >Medium</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-logo" aria-hidden="true">AE.</div>
+      <p class="footer-copy">&copy; 2025 Aiden Eichenour</p>
+      <div class="footer-links">
+        <a
+          href="https://www.linkedin.com/in/aiden-eichenour-b56518235"
+          target="_blank"
+          rel="noopener"
+          >LinkedIn</a
+        >
+        <a
+          href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer"
+          target="_blank"
+          rel="noopener"
+          >Behance</a
+        >
+        <a href="https://medium.com/@aibreich" target="_blank" rel="noopener"
+          >Medium</a
+        >
+        <a href="/cdn-cgi/l/email-protection#d9b8b0bbabbcb0bab199b0acf7bcbdac"
+          >Email</a
+        >
+      </div>
+    </footer>
+    <script src="shared.js"></script>
+  </body>
+</html>

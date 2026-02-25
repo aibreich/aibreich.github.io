@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Puppy Watch — Project Spotlight · Aiden Eichenour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .cs-step-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+  .cs-step-list li { display: flex; align-items: flex-start; gap: 16px; font-size: 16px; color: var(--muted); line-height: 1.65; }
+  .cs-step-list li::before { content: attr(data-n); font-family: var(--font-display); font-weight: 800; font-size: 13px; color: var(--accent); background: rgba(91,140,255,0.1); border: 1px solid rgba(91,140,255,0.2); border-radius: 6px; padding: 3px 10px; margin-top: 1px; flex-shrink: 0; }
+  .cs-step-list li strong { color: var(--text); }
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--muted); line-height: 1.6; }
+  .checklist li::before { content: '✅'; flex-shrink: 0; font-size: 14px; margin-top: 2px; }
+  .checklist li strong { color: var(--text); }
+  .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+  .tech-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .tech-card-icon { font-size: 24px; margin-bottom: 10px; }
+  .tech-card-name { font-family: var(--font-display); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .tech-card-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  @media (max-width: 700px) { .tech-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Aiden Eichenour — home">AE.</a>
+  <ul class="nav-links">
+    <li><a href="index.html#projects">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button type="button" class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <a href="index.html#projects">Work</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#contact">Let's Talk</a>
+</nav>
+
+<main id="main-content">
+<div class="cs-hero">
+  <div class="cs-hero-bg"></div>
+  <div class="cs-hero-blob" style="background: radial-gradient(ellipse at center, rgba(255,107,107,0.18) 0%, transparent 68%);"></div>
+  <div class="cs-hero-content">
+    <a href="index.html" class="cs-back">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Work
+    </a>
+    <p class="cs-eyebrow">Vibe Coding · Pet Care · Offline Web App</p>
+    <h1 class="cs-title">Puppy Watch</h1>
+    <p class="cs-subtitle">A lightweight, offline-first activity tracker for puppy parents — built in a weekend to solve a real daily problem using nothing but browser-native APIs.</p>
+    <div class="cs-meta-row">
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-value">Solo Developer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Type</span><span class="cs-meta-value">Vibe Coding</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Stack</span><span class="cs-meta-value">HTML · CSS · JavaScript</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">GitHub</span><span class="cs-meta-value"><a href="https://github.com/aibreich/puppyWatch" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">View Repo →</a></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero image -->
+<div style="background:var(--surface); border-bottom:1px solid var(--border);">
+  <div style="max-width:1100px; margin:0 auto; padding:0 64px;">
+    <img
+      src="https://framerusercontent.com/images/vRBoLnejJNhBNPTBIfluw5ziaX8.png"
+      alt="Puppy Watch app interface"
+      style="width:100%; display:block; border-radius:0 0 20px 20px; border:1px solid var(--border); border-top:none;"
+    />
+  </div>
+</div>
+
+<div class="cs-body">
+
+  <!-- Overview -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Overview</p>
+    <h2 class="cs-section-title">My dog needed a schedule. My phone had no good app for it.</h2>
+    <p class="cs-text">When I got my boxer Arya, I kept losing track of when she last ate, went outside, or had a walk. Every app I found was either bloated with social features, required an account, or needed a constant internet connection. So I built my own in a weekend.</p>
+    <p class="cs-text">Puppy Watch is intentionally minimal — log activities with one tap, run a countdown timer for potty breaks, and have everything persist locally without any backend. It was the first project where I made a deliberate <strong>client-first architecture</strong> decision from the start.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- The Problem -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">The Problem</p>
+    <h2 class="cs-section-title">Puppy routines are time-critical. Existing tools made them complicated.</h2>
+    <p class="cs-text">Young puppies need to go outside every 1–2 hours. Missing that window reliably leads to accidents. The problem isn't awareness — it's that when you're busy, you genuinely lose track. I needed something I could tap in under 2 seconds that would also remind me when the next break was due.</p>
+
+    <div class="cs-two-col" style="margin-top:28px;">
+      <div class="cs-card">
+        <div class="cs-card-icon">😤</div>
+        <h3 class="cs-card-title">What existing apps got wrong</h3>
+        <p class="cs-card-text">Most pet trackers required accounts, pushed notifications through cloud services, or buried the core logging action behind several taps. Privacy concerns and offline reliability were afterthoughts.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">🎯</div>
+        <h3 class="cs-card-title">What I actually needed</h3>
+        <p class="cs-card-text">One-tap logging, a visible countdown timer, a running activity history — all of it working offline, with no login, and no data leaving the device. Simple enough to use half-asleep at 6am.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Tech Decisions -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Technical Decisions</p>
+    <h2 class="cs-section-title">Every API choice was intentional.</h2>
+    <p class="cs-text">I constrained myself to zero dependencies and zero backend — which forced me to think carefully about which browser APIs could replace what I'd normally reach for a server to do.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-icon">💾</div>
+        <div class="tech-card-name">localStorage API</div>
+        <div class="tech-card-desc">All activity logs and timer state persist across sessions entirely on-device. No cloud sync, no accounts, no data exposure. Privacy-first by design.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-icon">🔔</div>
+        <div class="tech-card-name">Web Notifications API</div>
+        <div class="tech-card-desc">When the potty timer ends, the browser fires a native notification — even if the tab is in the background. No push service or server required.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-icon">⌨️</div>
+        <div class="tech-card-name">Keyboard Shortcuts</div>
+        <div class="tech-card-desc">Ctrl/Cmd + Space starts and pauses the timer. Power users shouldn't have to reach for the mouse to do the most common action in the app.</div>
+      </div>
+    </div>
+
+    <p class="cs-text">The timer itself uses <code style="font-family:monospace; background:var(--surface2); padding:2px 7px; border-radius:4px; font-size:14px;">setInterval</code> with a correction loop to account for browser throttling of background tabs — something I didn't expect to need until I noticed the timer drifting after switching apps on mobile.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- What I Built -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Features</p>
+    <h2 class="cs-section-title">Small surface area, complete experience.</h2>
+    <p class="cs-text">I kept the feature set tight on purpose — every addition had to justify itself against the goal of sub-2-second logging.</p>
+    <ul class="checklist">
+      <li><strong>One-tap activity logging</strong> — potty breaks, walks, and feedings each get a dedicated button. Each tap timestamps and stores the entry immediately.</li>
+      <li><strong>Potty countdown timer</strong> — start, pause, resume, and reset with visual progress feedback. Fires a Web Notification on completion.</li>
+      <li><strong>Persistent activity history</strong> — a scrollable log of every entry with timestamps, stored in localStorage and available across sessions.</li>
+      <li><strong>Fully offline</strong> — no internet required after the initial page load. Works as a mobile browser bookmark without any PWA setup.</li>
+      <li><strong>Keyboard shortcuts</strong> — Ctrl/Cmd + Space for timer control, making it fast to use without breaking focus.</li>
+    </ul>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Reflections -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">What I Learned</p>
+    <h2 class="cs-section-title">Constraints made it better.</h2>
+    <p class="cs-text">The no-backend constraint forced me to think seriously about data architecture upfront. Deciding what to store, when to write, and how to handle edge cases like a cleared localStorage session made me a more deliberate engineer.</p>
+    <p class="cs-text">I also learned that responsive design and offline support aren't just technical checkboxes — they're promises you make to the user. Someone reaching for this at 6am with one eye open needs it to just work, on whatever device is nearest.</p>
+
+    <div class="cs-callout">The best UX for a utility app is the one you don't notice — because it never makes you think.</div>
+
+    <div class="cs-tags">
+      <span class="process-tag">HTML / CSS / JS</span>
+      <span class="process-tag">localStorage API</span>
+      <span class="process-tag">Web Notifications API</span>
+      <span class="process-tag">Offline-First</span>
+      <span class="process-tag">Client-Side Architecture</span>
+      <span class="process-tag">Responsive Design</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Next project -->
+<div class="cs-next">
+  <div>
+    <p class="cs-next-label">Next Vibe Coding Project</p>
+    <h2 class="cs-next-title">AudVis →</h2>
+  </div>
+  <a href="audvis.html" class="cs-next-link">
+    View Project
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">AE.</div>
+  <p class="footer-copy">&copy; 2025 Aiden Eichenour</p>
+  <div class="footer-links">
+    <a href="index.html#projects">Work</a>
+    <a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener">Behance</a>
+    <a href="/cdn-cgi/l/email-protection#e889818a9a8d818b80a8819dc68d8c9d">Email</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Child Life Zone — Project · Aiden Eichenour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .cs-step-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+  .cs-step-list li { display: flex; align-items: flex-start; gap: 16px; font-size: 16px; color: var(--muted); line-height: 1.65; }
+  .cs-step-list li::before { content: attr(data-n); font-family: var(--font-display); font-weight: 800; font-size: 13px; color: var(--accent); background: rgba(91,140,255,0.1); border: 1px solid rgba(91,140,255,0.2); border-radius: 6px; padding: 3px 10px; margin-top: 1px; flex-shrink: 0; }
+  .cs-step-list li strong { color: var(--text); }
+
+  .cs-github-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 24px;
+    text-decoration: none; color: var(--text);
+    font-size: 15px; font-weight: 500;
+    transition: border-color 0.2s, transform 0.2s;
+    margin-top: 16px;
+  }
+  .cs-github-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .cs-github-link svg { color: var(--accent); flex-shrink: 0; }
+  .cs-github-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Aiden Eichenour — home">AE.</a>
+  <ul class="nav-links">
+    <li><a href="index.html#projects">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button type="button" class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <a href="index.html#projects">Work</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#contact">Let's Talk</a>
+</nav>
+
+<!-- Hero -->
+<main id="main-content">
+<div class="cs-hero">
+  <div class="cs-hero-bg"></div>
+  <div class="cs-hero-blob" style="background: radial-gradient(ellipse at center, rgba(91,255,178,0.1) 0%, transparent 68%);"></div>
+  <div class="cs-hero-content">
+    <a href="index.html" class="cs-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Work
+    </a>
+    <p class="cs-eyebrow">Team Project · Web Development · Healthcare</p>
+    <h1 class="cs-title">Child Life Zone</h1>
+    <p class="cs-subtitle">A team project creating a digital environment for Riley Children's Hospital — building an interactive landing page with a QR code system linking six program sections, resulting in a 90% positive feedback rating and patients averaging 2 minutes faster access to resources.</p>
+    <div class="cs-meta-row">
+      <div class="cs-meta-item"><span class="cs-meta-label">Type</span><span class="cs-meta-value">Team Project</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-value">Riley Children's Hospital</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-value">Web Developer & Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Stack</span><span class="cs-meta-value">HTML · CSS · JavaScript</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero image -->
+<div style="background:var(--surface); border-bottom:1px solid var(--border);">
+  <div style="max-width:1100px; margin:0 auto; padding:0 64px;">
+    <img
+      src="https://framerusercontent.com/images/uQpjXb5BjchDjdWugMr3MWVivE.png"
+      alt="Child Life Zone website"
+      style="width:100%; display:block; border-radius:0 0 20px 20px; border:1px solid var(--border); border-top:none;"
+    />
+  </div>
+</div>
+
+<!-- Body -->
+<div class="cs-body">
+
+  <!-- Overview -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Overview</p>
+    <h2 class="cs-section-title">Connecting a children's hospital program with its patients.</h2>
+    <p class="cs-text">Working as part of a team, we designed and developed an interactive landing page for the Child Life Zone at Riley Children's Hospital — a program offering activities, STEM programs, video gaming, and Zone2Go in-room delivery to patients across the hospital. The page was the digital front door to all of it, letting patients and families know what was available, when, and how to access it from anywhere in the building.</p>
+    <p class="cs-text">The outcome: a <strong>90% positive feedback rating</strong>, a <strong>15% reduction in printed material usage</strong>, and patients averaging <strong>2 minutes faster access</strong> to program resources. This was my first professional web development experience, and the high-stakes audience — children who are patients, anxious families, hospital staff — made every content and design decision feel genuinely consequential.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- The challenge -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">The Challenge</p>
+    <h2 class="cs-section-title">Content for an audience that needs clarity, not complexity.</h2>
+    <p class="cs-text">One of the primary challenges was crafting content and layout that worked for a genuinely diverse user group — from young patients navigating an unfamiliar environment, to parents processing stressful medical situations, to Child Life staff updating the page regularly.</p>
+    <div class="cs-callout">The content couldn't be overly extensive or complex. Every design decision had to serve clarity first.</div>
+    <p class="cs-text">This meant being deliberate about reading level, information hierarchy, and what to show versus what to leave out — a real lesson in content strategy before I even had the vocabulary to call it that.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- What we built -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">What We Built</p>
+    <h2 class="cs-section-title">An accessible, maintainable landing page for the program.</h2>
+    <p class="cs-text">The page was built in HTML, CSS, and JavaScript, designed to be maintainable by hospital staff who weren't necessarily technical. This shaped every decision — from how content was structured in the markup, to how updates could be made without breaking the layout.</p>
+
+    <div class="cs-two-col">
+      <div class="cs-card">
+        <div class="cs-card-icon">🔗</div>
+        <h3 class="cs-card-title">QR Code System</h3>
+        <p class="cs-card-text">Co-created a digital brochure with a QR code system linking to six Child Life Zone sections — Explore The Zone, Riley Kids TV 5, Zone2Go Activities, STEM Programs, Video Gaming, and Learn More. Patients could access any section instantly from anywhere in the hospital.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">🧪</div>
+        <h3 class="cs-card-title">STEM & Activity Content</h3>
+        <p class="cs-card-text">Built out content for rocket launches, 3D printing, telepresence robots, Minecraft gaming, and Zone2Go in-room activity delivery — each section written to excite a child who might be stuck in a hospital room with limited mobility.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">📅</div>
+        <h3 class="cs-card-title">Visit Scheduling</h3>
+        <p class="cs-card-text">Clear outpatient and inpatient visit logic: who can come, when, and how to get there — including the inpatient volunteer escort process. Structured so a parent in a stressful moment could find the answer in under 10 seconds.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">🤝</div>
+        <h3 class="cs-card-title">Maintainable Handoff</h3>
+        <p class="cs-card-text">Documented code with detailed inline comments so hospital staff — not necessarily technical — could update content without breaking layout. Led to a 15% decrease in printed material as digital access replaced physical brochures.</p>
+      </div>
+    </div>
+
+    <div class="cs-outcome-row" style="margin: 32px 0;">
+      <div class="cs-outcome">
+        <div class="cs-outcome-num">90%</div>
+        <div class="cs-outcome-label">Positive feedback rating from patients and families</div>
+      </div>
+      <div class="cs-outcome">
+        <div class="cs-outcome-num">15%</div>
+        <div class="cs-outcome-label">Reduction in printed material usage</div>
+      </div>
+      <div class="cs-outcome">
+        <div class="cs-outcome-num">2 min</div>
+        <div class="cs-outcome-label">Faster average access to program resources</div>
+      </div>
+    </div>
+
+    <img
+      src="https://framerusercontent.com/images/vUOl9cvtjUiUijUTmgBZ9OqhEw.png"
+      alt="Child Life Zone website design"
+      class="cs-img"
+    />
+    <p class="cs-img-caption">Child Life Zone landing page — built for Riley Children's Hospital</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Learnings -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">What I Learned</p>
+    <h2 class="cs-section-title">First professional web experience — and what it set in motion.</h2>
+    <p class="cs-text">This project was my first immersion into professional web development practices. It introduced me to the reality that building for real users in a real context — a hospital, no less — is fundamentally different from building for a course rubric or a personal portfolio.</p>
+    <ul class="cs-step-list">
+      <li data-n="01"><span><strong>User-centered content decisions</strong> — every piece of content was evaluated against the question: does this serve the patient or family who needs information right now?</span></li>
+      <li data-n="02"><span><strong>Accessibility in practice</strong> — this sparked my deeper interest in accessibility as a discipline. A children's hospital audience made the stakes of getting it right concrete, not theoretical.</span></li>
+      <li data-n="03"><span><strong>Code documentation as a design practice</strong> — writing comments and structuring code for future maintainers is its own form of UX — designing for the next developer, not just the next user.</span></li>
+      <li data-n="04"><span><strong>Collaboration under real constraints</strong> — working as a team toward a client deliverable, with content and scheduling requirements set externally, was a very different challenge from self-directed projects.</span></li>
+    </ul>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- GitHub -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Explore the Code</p>
+    <h2 class="cs-section-title">The full codebase is on GitHub.</h2>
+    <p class="cs-text">The repository includes the complete HTML, CSS, and JavaScript source for the Child Life Zone landing page, with documentation and comments throughout.</p>
+    <a href="https://github.com/aibreich/CLZ" target="_blank" rel="noopener" class="cs-github-link">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      <div>
+        <span class="cs-github-label">View Repository</span>
+        github.com/aibreich/CLZ
+      </div>
+    </a>
+    <div class="cs-tags" style="margin-top:40px;">
+      <span class="process-tag">HTML / CSS / JS</span>
+      <span class="process-tag">Content Strategy</span>
+      <span class="process-tag">Accessibility</span>
+      <span class="process-tag">Team Project</span>
+      <span class="process-tag">Healthcare UX</span>
+      <span class="process-tag">Code Handoff</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Next project -->
+<div class="cs-next">
+  <div>
+    <p class="cs-next-label">Back to Start</p>
+    <h2 class="cs-next-title">Mindful →</h2>
+  </div>
+  <a href="mindful.html" class="cs-next-link">
+    View Case Study
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+</main>
+<footer>
+  <div class="footer-logo">AE.</div>
+  <p class="footer-copy">&copy; 2025 Aiden Eichenour. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="index.html#projects">Work</a>
+    <a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank">Behance</a>
+    <a href="/cdn-cgi/l/email-protection#2e4f474c5c4b474d466e475b004b4a5b">Email</a>
+  </div>
+</footer>
+
+
+<script src="shared.js"></script>
+</body>
+</html>

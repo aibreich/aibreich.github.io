@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mindful — Case Study · Aiden Eichenour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="shared.css" />
+    <style>
+      .cs-step-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin: 24px 0;
+      }
+      .cs-step-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        font-size: 16px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .cs-step-list li::before {
+        content: attr(data-n);
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 13px;
+        color: var(--accent);
+        background: rgba(91, 140, 255, 0.1);
+        border: 1px solid rgba(91, 140, 255, 0.2);
+        border-radius: 6px;
+        padding: 3px 10px;
+        margin-top: 1px;
+        flex-shrink: 0;
+      }
+      .cs-step-list li strong {
+        color: var(--text);
+      }
+
+      .checklist {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .checklist li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .checklist li::before {
+        content: "✅";
+        flex-shrink: 0;
+        font-size: 14px;
+        margin-top: 2px;
+      }
+      .checklist li strong {
+        color: var(--text);
+      }
+
+      .affinity-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 20px 0;
+      }
+      .affinity-tag {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--muted);
+        letter-spacing: 0.04em;
+      }
+
+      /* Full-width image strip */
+      .cs-img-strip {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin: 40px 0;
+      }
+      .cs-img-strip img {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        display: block;
+      }
+
+      @media (max-width: 700px) {
+        .cs-img-strip {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Aiden Eichenour — home"
+        >AE.</a
+      >
+      <ul class="nav-links">
+        <li><a href="index.html#projects">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#process">Process</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Let's Talk</a></li>
+      </ul>
+      <button
+        type="button"
+        class="nav-hamburger"
+        id="nav-hamburger"
+        aria-expanded="false"
+        aria-controls="nav-drawer"
+        aria-label="Open navigation menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+      <a href="index.html#projects">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#contact">Let's Talk</a>
+    </nav>
+
+    <!-- Hero -->
+    <main id="main-content">
+      <div class="cs-hero">
+        <div class="cs-hero-bg"></div>
+        <div
+          class="cs-hero-blob"
+          style="
+            background: radial-gradient(
+              ellipse at center,
+              rgba(91, 140, 255, 0.18) 0%,
+              transparent 68%
+            );
+          "
+        ></div>
+        <div class="cs-hero-content">
+          <a href="index.html" class="cs-back">
+            <svg
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Back to Work
+          </a>
+          <p class="cs-eyebrow">
+            Case Study · Mobile App · Student Productivity
+          </p>
+          <h1 class="cs-title">Mindful</h1>
+          <p class="cs-subtitle">
+            A team project to help college students stop procrastinating and
+            actually follow through — designed through two months of research,
+            rapid prototyping, and iterative usability testing.
+          </p>
+          <div class="cs-meta-row">
+            <div class="cs-meta-item">
+              <span class="cs-meta-label">Role</span
+              ><span class="cs-meta-value">UX Researcher & Designer</span>
+            </div>
+            <div class="cs-meta-item">
+              <span class="cs-meta-label">Team</span
+              ><span class="cs-meta-value">5 Members</span>
+            </div>
+            <div class="cs-meta-item">
+              <span class="cs-meta-label">Timeline</span
+              ><span class="cs-meta-value">2 Months</span>
+            </div>
+            <div class="cs-meta-item">
+              <span class="cs-meta-label">Tools</span
+              ><span class="cs-meta-value">Figma · FigJam · Excel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero image -->
+      <div
+        style="
+          background: var(--surface);
+          border-bottom: 1px solid var(--border);
+        "
+      >
+        <div style="max-width: 1100px; margin: 0 auto; padding: 0 64px">
+          <img
+            src="https://framerusercontent.com/images/vwbtXa9cuGo9Y0WHLV9cALU4RHw.png"
+            alt="Mindful app screens"
+            style="
+              width: 100%;
+              display: block;
+              border-radius: 0 0 20px 20px;
+              border: 1px solid var(--border);
+              border-top: none;
+            "
+          />
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="cs-body">
+        <!-- Overview -->
+        <div class="cs-section reveal">
+          <p class="cs-section-label">Overview</p>
+          <h2 class="cs-section-title">
+            Students have calendars. They just don't follow them.
+          </h2>
+          <p class="cs-text">
+            Despite using calendar apps and to-do lists, students frequently
+            procrastinate, get distracted by their phones, or constantly
+            reshuffle their schedules without moments of reflection. My team set
+            out to fix that.
+          </p>
+          <p class="cs-text">
+            Over two months, we went from research to a tested high-fidelity
+            prototype — applying every stage of the design process with a focus
+            on innovation and behavioral change. Our final solution helped
+            students complete tasks <strong>21% faster</strong> with
+            <strong>13% fewer clicks</strong>, while maintaining a
+            <strong>100% task success rate</strong>.
+          </p>
+        </div>
+
+        <hr class="cs-divider" />
+
+        <!-- Context & Team -->
+        <div class="cs-section reveal">
+          <p class="cs-section-label">Context & Team</p>
+          <h2 class="cs-section-title">
+            A two-month sprint with a team of five.
+          </h2>
+          <p class="cs-text">
+            I worked within a team of five where each member contributed across
+            research, design, and development. My primary responsibilities
+            included user research, wireframing, and usability testing. We
+            structured our workflow into weekly sprints with clearly assigned
+            deliverables — leveraging Figma, FigJam, and Excel to coordinate
+            throughout the project.
+          </p>
+          <p class="cs-text">
+            One of our biggest challenges was balancing innovation with
+            feasibility. We addressed this through rapid prototyping and
+            iterative feedback loops, ensuring our solution could realistically
+            integrate into students' existing habits rather than replacing them
+            entirely.
+          </p>
+
+          <div class="cs-two-col" style="margin-top: 32px">
+            <div class="cs-card">
+              <div class="cs-card-icon">🎯</div>
+              <h3 class="cs-card-title">Target Users</h3>
+              <p class="cs-card-text">
+                We initially scoped broadly, then narrowed to
+                <strong>graduate students</strong> due to their heavier
+                self-directed workload. We also included a small undergraduate
+                sample to surface commonalities and differences.
+              </p>
+            </div>
+            <div class="cs-card">
+              <div class="cs-card-icon">⚙️</div>
+              <h3 class="cs-card-title">My Role</h3>
+              <p class="cs-card-text">
+                Conducted and facilitated interviews, led affinity mapping
+                sessions, created wireframes, and ran usability test sessions —
+                both as note-taker and moderator.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-top: 32px">
+            <img
+              src="https://framerusercontent.com/images/ZspDEWo4MTtg5lL1mKSFqGjswM.png"
+              alt="Mindful research and scope diagram"
+              class="cs-img"
+              style="margin-bottom: 8px"
+            />
+            <p class="cs-img-caption">Project scope and target user framing</p>
+          </div>
+        </div>
+
+        <hr class="cs-divider" />
+
+        <!-- Problem -->
+        <div class="cs-section reveal">
+          <p class="cs-section-label">Problem Statement</p>
+          <h2 class="cs-section-title">
+            Scheduling tools help students plan. They don't help them follow
+            through.
+          </h2>
+          <p class="cs-text">
+            Our research showed that students frequently push tasks back, get
+            distracted by their phones, or shift their schedules reactively —
+            often without reflecting on their time management habits. Existing
+            productivity tools handle scheduling, but fail to address the
+            <strong>behavioral aspects</strong> of following through.
+          </p>
+          <p class="cs-text">
+            This results in stress, decreased efficiency, and missed deadlines.
+            Our project aimed to bridge that gap by designing an intervention
+            that promotes accountability and habit formation.
+          </p>
+
+          <div class="cs-callout">
+            How might we support students in following through with their
+            scheduled plans to effectively manage their time?
+          </div>
+
+          <p class="cs-section-label" style="margin-top: 40px">
+            Our Primary Goals
+          </p>
+          <ul class="checklist">
+            <li>
+              <strong>Help students stay accountable</strong> for their
+              scheduled tasks
+            </li>
+            <li>
+              <strong>Encourage moments of reflection</strong> to reduce
+              reactive, last-minute rescheduling
+            </li>
+            <li>
+              <strong>Minimize digital distractions</strong> during dedicated
+              focus time
+            </li>
+            <li>
+              <strong>Provide customizable limitations</strong> that match
+              individual user preferences
+            </li>
+          </ul>
+        </div>
+
+        <hr class="cs-divider" />
+
+        <!-- Research -->
+        <div class="cs-section reveal">
+          <p class="cs-section-label">Research & Insights</p>
+          <h2 class="cs-section-title">
+            Two rounds of interviews. One clear pattern.
+          </h2>
+          <p class="cs-text">
+            We used qualitative interviews in two rounds to refine our problem
+            definition. The first round helped us understand general scheduling
+            challenges. The second round, guided by first-round insights, helped
+            us pinpoint the specific behavioral breakdown — students knowing
+            what to do but not doing it.
+          </p>
+          <p class="cs-text">
+            Using affinity mapping in FigJam, we categorized responses into key
+            themes:
+          </p>
+
+          <div class="affinity-tags">
+            <span class="affinity-tag">No Motivation</span>
+            <span class="affinity-tag">Unexpected Events</span>
+            <span class="affinity-tag">Lack of Accountability</span>
+            <span class="affinity-tag">Bad Planning</span>
+            <span class="affinity-tag">Distractions</span>
+          </div>
+
+          <p class="cs-text">
+            These themes shaped our design approach, with a strong focus on
+            <strong>motivation and accountability mechanisms</strong> rather
+            than adding another scheduling layer on top of existing tools.
+          </p>
+
+          <img
+            src="https://framerusercontent.com/images/cSPBFlPo9iqkemkX9Px6Fhb6bU.jpg"
+            alt="Affinity mapping session"
+            class="cs-img"
+          />
+          <p class="cs-img-caption">
+            Affinity mapping session — categorizing interview data into
+            behavioral themes
+          </p>
+        </div>
+
+        <hr class="cs-divider" />
+
+        <!-- Research Methodology -->
+        <div class="cs-section reveal">
+          <p class="cs-section-label">Research Methodology</p>
+          <h2 class="cs-section-title">
+            Structured from the start — not reverse-engineered from results.
+          </h2>
+          <p class="cs-text">
+            We recruited ten students for the discovery phase — a mix of
+            graduate and undergraduate participants selected to surface both the
+            self-directed workload pressures of grad school and the distraction
+            patterns more common among undergrads. Interviews were
+            semi-structured, lasting 25–40 minutes each, and focused on three
+            areas: existing scheduling habits, moments of failure or
+            procrastination, and emotional responses to those failures.
+          </p>
+          <div class="cs-two-col" style="margin-top: 28px">
+            <div class="cs-card">
+              <div class="cs-card-icon">🎙️</div>
+              <h3 class="cs-card-title">25 Discovery interviews</h3>
+              <p class="cs-card-text">
+                Semi-structured sessions, 25–40 min each. I served as both
+                moderator and note-taker across different sessions, learning to
+                stay neutral and resist the impulse to help participants who
+                were struggling with tasks or questions.
+              </p>
+            </div>
+            <div class="cs-card">
+              <div class="cs-card-icon">🗂️</div>
+              <h3 class="cs-card-title">Affinity mapping in FigJam</h3>
+              <p class="cs-card-text">
+                Raw notes from all ten interviews were synthesized into five
+                behavioral themes. The full team participated in the mapping
+                session to reduce individual bias and ensure multiple
+                interpretations of ambiguous data points were considered.
+              </p>
+            </div>
+            <div class="cs-card">
+              <div class="cs-card-icon">🧪</div>
+              <h3 class="cs-card-title">15 participants at mid-fi</h3>
+              <p class="cs-card-text">
+                Structured usability tests with timed tasks, click counting, and
+                a satisfaction survey. Three critical usability issues were
+                identified and resolved — all related to navigation labeling,
+                save state clarity, and onboarding copy — before moving to
+                high-fidelity.
+              </p>
+            </div>
+            <div class="cs-card">
+              <div class="cs-card-icon">🏁</div>
+              <h3 class="cs-card-title">20 participants at hi-fi</h3>
+              <p class="cs-card-text">
+                Final validation round using the same task set and KPI
+                framework. Results showed 21% faster completion, 13% fewer
+                clicks, and 100% task success rate — confirming the mid-fi fixes
+                held and the high-fidelity layer added clarity rather than
+                complexity.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="cs-divider" />
+
+        <!-- Design Process -->
+        <div class="cs-section reveal">
+          <p class="cs-section-label">Design Process & Iterations</p>
+          <h2 class="cs-section-title">
+            Low-fi to high-fi, tested at every step.
+          </h2>
+          <p class="cs-text">
+            In the prototyping phase we explored two low-fidelity concepts, each
+            addressing different aspects of the problem. Through observational
+            testing with participants, we tracked key KPIs: average time on
+            task, number of clicks, success rate, and user satisfaction.
+          </p>
+          <p class="cs-text">
+            Based on those results, we narrowed to two mid-fidelity prototypes
+            and refined interactions from user feedback. We ultimately selected
+            <strong>Mindful</strong> as the primary design — it showed greater
+            personality and more realistic feasibility for real-world use.
+          </p>
+
+          <ul class="cs-step-list">
+            <li data-n="01">
+              <span
+                ><strong>Low-fidelity testing</strong> — two competing concepts
+                tested with participants to surface which core interaction model
+                resonated most.</span
+              >
+            </li>
+            <li data-n="02">
+              <span
+                ><strong>Mid-fidelity iteration</strong> — refined two variants
+                based on testing data; Mindful outperformed on user satisfaction
+                and clarity.</span
+              >
+            </li>
+            <li data-n="03">
+              <span
+                ><strong>High-fidelity build</strong> — calming color palette,
+                refined typography, and subtle animations added to guide
+                interactions and reduce cognitive load.</span
+              >
+            </li>
+            <li data-n="04">
+              <span
+                ><strong>Gamification pivot</strong> — initially explored
+                gamified habit tracking; users found it overwhelming during
+                testing, so we shifted to a subtle accountability system with no
+                pressure mechanics.</span
+              >
+            </li>
+          </ul>
+
+          <div class="cs-two-col" style="margin-top: 32px">
+            <img
+              src="https://framerusercontent.com/images/Z8TfENqIXnEjEstERL8ruYieZxQ.png"
+              alt="Mindful wireframes"
+              style="
+                width: 100%;
+                border-radius: 12px;
+                border: 1px solid var(--border);
+                display: block;
+              "
+            />
+            <img
+              src="https://framerusercontent.com/images/w1g74VhpTctLXkmO5Zk7K90zlo.png"
+              alt="Mindful mid-fidelity screens"
+              style="
+                width: 100%;
+                border-radius: 12px;
+                border: 1px solid var(--border);
+                display: block;
+              "
+            />
+          </div>
+          <p class="cs-img-caption" style="margin-top: 12px">
+            Early wireframes and mid-fidelity screens from the prototyping phase
+          </p>
+        </div>
+
+        <hr class="cs-divider" />
+
+        <!-- Final Solution -->
+        <div class="cs-section reveal">
+          <p class="cs-section-label">Final Solution</p>
+          <h2 class="cs-section-title">
+            A reflection app that makes follow-through feel natural.
+          </h2>
+          <p class="cs-text">
+            For the high-fidelity prototype, we focused on visual polish and
+            accessibility. A calming color palette promotes focus, adjusted
+            typography improves readability, and subtle animations guide user
+            interactions without being distracting.
+          </p>
+          <p class="cs-text">
+            Rather than adding pressure with streaks or gamification, Mindful
+            creates <strong>gentle moments of accountability</strong> —
+            prompting students to reflect on their schedule, not just view it.
+          </p>
+
+          <div class="cs-img-strip">
+            <img
+              src="https://framerusercontent.com/images/aYtmcjI4hxYtZ7TVj8dT5gzNWUE.png"
+              alt="Mindful final screen 1"
+            />
+            <img
+              src="https://framerusercontent.com/images/j49bYrIVtf5V5QAcuz6Tz74mCg.png"
+              alt="Mindful final screen 2"
+            />
+            <img
+              src="https://framerusercontent.com/images/IT5E3HFXeoCYrcG1puw1jDlChC0.png"
+              alt="Mindful final screen 3"
+            />
+          </div>
+          <p class="cs-img-caption">
+            High-fidelity screens from the final Mindful prototype
+          </p>
+        </div>
+
+        <hr class="cs-divider" />
+
+        <!-- Outcomes -->
+        <div class="cs-section reveal">
+          <p class="cs-section-label">Testing Outcomes</p>
+          <h2 class="cs-section-title">
+            Numbers that validated the design direction.
+          </h2>
+          <p class="cs-text">
+            Across two rounds of structured usability testing — 15 participants
+            at mid-fidelity and 20 participants at high-fidelity — we measured
+            four KPIs: average time on task, click count, task success rate, and
+            user satisfaction. Tasks included scheduling a study session,
+            reviewing a past reflection, and editing a task mid-session — each
+            timed from first interaction to successful completion by a neutral
+            moderator.
+          </p>
+
+          <div
+            class="cs-outcome-row"
+            style="grid-template-columns: repeat(2, 1fr); margin-bottom: 16px"
+          >
+            <div class="cs-outcome">
+              <div class="cs-outcome-num">21%</div>
+              <div class="cs-outcome-label">
+                Faster task completion (mid-fi → hi-fi, 20 participants)
+              </div>
+            </div>
+            <div class="cs-outcome">
+              <div class="cs-outcome-num">13%</div>
+              <div class="cs-outcome-label">
+                Fewer clicks to complete core tasks
+              </div>
+            </div>
+            <div class="cs-outcome">
+              <div class="cs-outcome-num">100%</div>
+              <div class="cs-outcome-label">
+                Task success rate across all 20 final testers
+              </div>
+            </div>
+            <div class="cs-outcome">
+              <div class="cs-outcome-num">75%</div>
+              <div class="cs-outcome-label">
+                Of surveyed students reported heightened focus after consistent
+                use
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-callout">
+            The 21% time reduction wasn’t from adding features — it came from
+            removing friction. Clearer hierarchy, fewer confirmation steps, and
+            better visual feedback each shaved seconds that compound into a
+            meaningfully different experience.
+          </div>
+
+          <div class="cs-two-col" style="margin-top: 28px">
+            <div class="cs-card">
+              <div class="cs-card-icon">🔍</div>
+              <h3 class="cs-card-title">3 critical issues resolved</h3>
+              <p class="cs-card-text">
+                Mid-fi testing surfaced three recurring blockers — an ambiguous
+                navigation label, an unclear save state, and a reflection prompt
+                that confused new users. All three were resolved before
+                high-fidelity build.
+              </p>
+            </div>
+            <div class="cs-card">
+              <div class="cs-card-icon">📊</div>
+              <h3 class="cs-card-title">A/B tested two layouts</h3>
+              <p class="cs-card-text">
+                We ran A/B testing on two landing page layouts, gathering
+                behavioral data on which structure led users more naturally to
+                the core scheduling flow. The winning layout improved conversion
+                into the core task by 10%.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="cs-divider" />
+
+        <!-- Reflections -->
+        <div class="cs-section reveal">
+          <p class="cs-section-label">Reflections & Learnings</p>
+          <h2 class="cs-section-title">
+            What two months of research and design taught me.
+          </h2>
+          <p class="cs-text">
+            This project sharpened my ability to efficiently identify the real
+            problem to solve — not just the surface-level complaint — and to
+            understand user concerns and pain points without projecting
+            assumptions onto them.
+          </p>
+          <p class="cs-text">
+            I also developed my skills as both a note-taker and a moderator
+            during research sessions. Learning to stay neutral, resist the urge
+            to help participants, and let them struggle productively was crucial
+            — any assistance would have corrupted our time-on-task and
+            completion rate data.
+          </p>
+          <div class="cs-callout">
+            The hardest part of user research isn't collecting data — it's
+            staying out of the way long enough to collect it honestly.
+          </div>
+          <div class="cs-tags">
+            <span class="process-tag">Qualitative Interviews</span>
+            <span class="process-tag">Affinity Mapping</span>
+            <span class="process-tag">Low-Fi Prototyping</span>
+            <span class="process-tag">Usability Testing</span>
+            <span class="process-tag">Iteration</span>
+            <span class="process-tag">Figma</span>
+            <span class="process-tag">FigJam</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next project -->
+      <div class="cs-next">
+        <div>
+          <p class="cs-next-label">Next Project</p>
+          <h2 class="cs-next-title">Macro Track →</h2>
+        </div>
+        <a href="macrotrack.html" class="cs-next-link">
+          View Project
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-logo">AE.</div>
+      <p class="footer-copy">
+        &copy; 2025 Aiden Eichenour. All rights reserved.
+      </p>
+      <div class="footer-links">
+        <a href="index.html#projects">Work</a>
+        <a
+          href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer"
+          target="_blank"
+          >Behance</a
+        >
+        <a href="/cdn-cgi/l/email-protection#53323a3121363a303b133a267d363726"
+          >Email</a
+        >
+      </div>
+    </footer>
+
+    <script src="shared.js"></script>
+  </body>
+</html>

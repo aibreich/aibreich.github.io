@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lumen Planner — Case Study · Aiden Eichenour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  /* LED state visualizer */
+  .led-states { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 28px 0; }
+  .led-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 16px; text-align: center; position: relative; overflow: hidden; }
+  .led-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .led-card.amber::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+  .led-card.green::before { background: linear-gradient(90deg, #10b981, #34d399); }
+  .led-card.pulse-amber::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); animation: ledPulse 1.5s ease-in-out infinite; }
+  .led-card.off::before { background: var(--border); }
+  @keyframes ledPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .led-dot { width: 20px; height: 20px; border-radius: 50%; margin: 0 auto 12px; }
+  .led-card.amber .led-dot { background: #f59e0b; box-shadow: 0 0 12px rgba(245,158,11,0.5); }
+  .led-card.green .led-dot { background: #10b981; box-shadow: 0 0 12px rgba(16,185,129,0.5); }
+  .led-card.pulse-amber .led-dot { background: #f59e0b; box-shadow: 0 0 12px rgba(245,158,11,0.5); animation: ledPulse 1.5s ease-in-out infinite; }
+  .led-card.off .led-dot { background: var(--border); }
+  .led-label { font-family: var(--font-display); font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .led-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+  /* Stakeholder cards */
+  .stakeholder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+  .stakeholder-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .stakeholder-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .stakeholder-name { font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .stakeholder-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* Principle pills */
+  .principle-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+  .principle-pill { display: flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; padding: 8px 16px; font-size: 13px; font-weight: 500; color: var(--muted); }
+  .principle-pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  /* Terminology table */
+  .term-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+  .term-table th { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+  .term-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--muted); }
+  .term-table tr:last-child td { border-bottom: none; }
+  .term-table td:first-child { color: var(--accent2); font-family: monospace; font-size: 13px; }
+  .term-table td:last-child { color: var(--text); font-weight: 500; }
+
+  @media (max-width: 700px) {
+    .led-states { grid-template-columns: repeat(2, 1fr); }
+    .stakeholder-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Aiden Eichenour — home">AE.</a>
+  <ul class="nav-links">
+    <li><a href="index.html#projects">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's Talk</a></li>
+    <li><a href="Eichenour_Aiden_Resume.pdf" target="_blank" rel="noopener" class="resume-btn" aria-label="Download Resume PDF">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9M4 6l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Résumé
+    </a></li>
+  </ul>
+  <button type="button" class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <a href="index.html#projects">Work</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#contact">Let's Talk</a>
+</nav>
+
+<main id="main-content">
+<div class="cs-hero">
+  <div class="cs-hero-bg"></div>
+  <div class="cs-hero-blob" style="background: radial-gradient(ellipse at center, rgba(245,158,11,0.15) 0%, transparent 68%);"></div>
+  <div class="cs-hero-content">
+    <a href="index.html" class="cs-back">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Work
+    </a>
+    <p class="cs-eyebrow">Case Study · Ubicomp · Assistive Design · Product Design</p>
+    <h1 class="cs-title">Lumen Planner</h1>
+    <p class="cs-subtitle">A context-aware smart weekly medicine organizer for older adults — using ambient light cues and sensor-based awareness to support medication adherence without relying on alarms, notifications, or short-term memory.</p>
+    <div class="cs-meta-row">
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-value">Solo Designer & Researcher</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Type</span><span class="cs-meta-value">Ubicomp Case Study</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Tools</span><span class="cs-meta-value">Figma · Procreate · Physical Prototype</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Published</span><span class="cs-meta-value"><a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">View on Behance →</a></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero image -->
+<div style="background:var(--surface); border-bottom:1px solid var(--border);">
+  <div style="max-width:1100px; margin:0 auto; padding:0 64px;">
+    <img
+      src="LP_PhysicalPrototype.jpg"
+      alt="Lumen Planner physical prototype — smart weekly pill organizer with LED indicators"
+      style="width:100%; display:block; border-radius:0 0 20px 20px; border:1px solid var(--border); border-top:none;"
+    />
+  </div>
+</div>
+
+<div class="cs-body">
+
+  <!-- Overview -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Overview</p>
+    <h2 class="cs-section-title">Medication adherence is a memory problem. Most solutions make it a technology problem.</h2>
+    <p class="cs-text">Older adults managing daily medications already have a tool they trust: the weekly pill organizer. It's familiar, low-cost, and deeply embedded in routine. The failure isn't the object — it's that nothing tells you whether you've taken today's dose or not, and cognitive fluctuations make that uncertainty dangerous.</p>
+    <p class="cs-text">Lumen Planner keeps the familiar object and adds a layer of calm, ambient intelligence — LED light cues that respond to interaction, proximity, and time, without notifications, alarms, or complex workflows. It was designed as a Ubiquitous Computing system rooted in Calm Technology principles: present when you need it, invisible when you don't.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Problem Space -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Problem Space</p>
+    <h2 class="cs-section-title">Existing solutions either do too little or demand too much.</h2>
+    <p class="cs-text">Missed medication among older adults with mild cognitive impairment is a serious and common health risk. The market has two responses: passive tools (standard pill organizers, paper calendars) that rely entirely on memory, and active tools (apps, automated dispensers like MedaCube) that introduce complexity, cost, and cognitive overhead the target users often can't sustain.</p>
+
+    <div class="cs-two-col" style="margin-top: 28px;">
+      <div class="cs-card">
+        <div class="cs-card-icon">📱</div>
+        <h3 class="cs-card-title">App-based reminders</h3>
+        <p class="cs-card-text">Require multi-step confirmation workflows. Users have to notice the notification, understand what it's asking, navigate to the app, and confirm. Each step is a point of failure for someone with cognitive fluctuations.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">🤖</div>
+        <h3 class="cs-card-title">Automated dispensers</h3>
+        <p class="cs-card-text">Products like MedaCube solve adherence but create new problems: large physical footprints, high costs, and interactions that feel clinical and infantilizing. They remove the user's agency rather than supporting it.</p>
+      </div>
+    </div>
+
+    <div class="cs-callout">The opportunity wasn't to replace the pill organizer. It was to make it aware — of the user, their routine, and whether today's dose had been taken.</div>
+
+    <div class="principle-row">
+      <div class="principle-pill"><div class="principle-pill-dot"></div>Calm Technology</div>
+      <div class="principle-pill"><div class="principle-pill-dot"></div>Context-Aware Sensing</div>
+      <div class="principle-pill"><div class="principle-pill-dot"></div>Memory-Supportive UX</div>
+      <div class="principle-pill"><div class="principle-pill-dot"></div>Familiar Object Anchoring</div>
+      <div class="principle-pill"><div class="principle-pill-dot"></div>Privacy-Respecting Caregiver Support</div>
+    </div>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Stakeholders -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Stakeholders & Context</p>
+    <h2 class="cs-section-title">Designing for dignity, not just usability.</h2>
+    <p class="cs-text">The primary user is an older adult living independently who manages daily medications but experiences mild cognitive challenges — short-term memory lapses, difficulty maintaining routines, variability day to day based on fatigue or distraction. Crucially, they value their independence and do not want a system that draws attention to mistakes or creates a sense of surveillance.</p>
+
+    <div class="stakeholder-grid">
+      <div class="stakeholder-card">
+        <div class="stakeholder-label">Primary User</div>
+        <div class="stakeholder-name">Ellie — Independent Older Adult</div>
+        <div class="stakeholder-desc">Mid-70s. Lives alone. Manages multiple daily medications. Experiences occasional memory lapses but is highly capable and values her autonomy. Uses a weekly pill organizer already — it's a trusted routine object.</div>
+      </div>
+      <div class="stakeholder-card">
+        <div class="stakeholder-label">Secondary Stakeholder</div>
+        <div class="stakeholder-name">Caregiver / Adult Family Member</div>
+        <div class="stakeholder-desc">Checks in remotely. Wants peace of mind without being intrusive. Receives optional lightweight status updates (taken / not taken) — nothing more. Privacy and Ellie's dignity are non-negotiable constraints on the caregiver view.</div>
+      </div>
+    </div>
+
+    <p class="cs-text">Context matters as much as persona. Medication adherence happens in real environments — kitchens, bedrooms, bathrooms — where memory cues are tied to lighting, movement, and physical routine. The system needed to live in those environments naturally, not add an alien object to a familiar space.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- LED System -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Interaction Design</p>
+    <h2 class="cs-section-title">Four light states. Zero notifications.</h2>
+    <p class="cs-text">The entire interaction model runs on ambient LED cues — no screen, no sound, no vibration. Each state is designed to communicate meaning through color and behavior alone, calibrated so the cues are noticeable without being alarming. The color system was refined after evaluation feedback indicated the initial differentiation between "gentle reminder" and "attention needed" wasn't clear enough.</p>
+
+    <div class="led-states">
+      <div class="led-card amber">
+        <div class="led-dot"></div>
+        <div class="led-label">Routine Ready</div>
+        <div class="led-desc">Warm amber glow highlights today's compartment. Steady, soft — present but not demanding.</div>
+      </div>
+      <div class="led-card amber">
+        <div class="led-dot"></div>
+        <div class="led-label">Proximity Detected</div>
+        <div class="led-desc">Cue brightens slightly as the user approaches. Acknowledges presence without interrupting.</div>
+      </div>
+      <div class="led-card green">
+        <div class="led-dot"></div>
+        <div class="led-label">Dose Confirmed</div>
+        <div class="led-desc">Soft green pulse shifts to steady green as lid closes. Clear positive confirmation — done for now.</div>
+      </div>
+      <div class="led-card pulse-amber">
+        <div class="led-dot"></div>
+        <div class="led-label">Missed Dose</div>
+        <div class="led-desc">Amber gradient pulse with gradual brightness increase. Escalates gently over time — not an alarm.</div>
+      </div>
+    </div>
+
+    <p class="cs-text">When a dose is confirmed, Lumen Planner eventually powers down the indicators. On return proximity, it briefly shows the last state — green for taken, amber for missed — so a user who can't remember whether they took their medication can check with a glance rather than a memory effort.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Physical Design -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Physical Design</p>
+    <h2 class="cs-section-title">Familiar enough to trust. Smart enough to help.</h2>
+    <p class="cs-text">The physical prototype retains the form factor of a standard weekly pill organizer — clear compartment labels for each day of the week, a form users already know. The back section houses the electronics and a Type-C charging port, with a small internal battery providing approximately one day of autonomous operation during power outages so the system never silently fails.</p>
+
+    <div class="cs-two-col" style="margin-top: 28px;">
+      <div class="cs-card">
+        <div class="cs-card-icon">📦</div>
+        <h3 class="cs-card-title">Familiar form factor</h3>
+        <p class="cs-card-text">The device looks and feels like a pill organizer users already own. Labeled Sun–Sat compartments, clear lids, compact footprint. The intelligence is additive — not a replacement for the trusted object, an upgrade of it.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">📱</div>
+        <h3 class="cs-card-title">QR setup — one scan</h3>
+        <p class="cs-card-text">Each device has a unique QR code on the underside. First-time setup requires one scan to pair with the companion app — designed specifically so setup couldn't become a barrier for the target user group.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">🔋</div>
+        <h3 class="cs-card-title">Power resilience</h3>
+        <p class="cs-card-text">Type-C charging with an internal battery buffer for ~1 day of independent operation. A medication device that silently stops working during a power outage is worse than no device — this constraint was non-negotiable.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">💡</div>
+        <h3 class="cs-card-title">Accessible light design</h3>
+        <p class="cs-card-text">Warm amber chosen for its accessibility across common age-related vision changes. Intensity is customizable via the companion app for users with stronger visual needs. No reliance on red/green distinction alone.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Evaluation -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Evaluation & Findings</p>
+    <h2 class="cs-section-title">Two participants. Real scenarios. Actionable findings.</h2>
+    <p class="cs-text">I conducted a small-scale evaluation using a combination of experience walkthrough, scenario-based testing, and heuristic review. Two participants: one aligned closely with the primary persona (mid-70s, memory lapses, living independently), one an adult caregiver who regularly manages a family member's medication routine. Both interacted with the physical mockup, the storyboard, and the Figma prototype across three scenarios.</p>
+
+    <ul class="cs-step-list">
+      <li data-n="01"><span><strong>Morning Routine Scenario</strong> — participants observed the steady amber glow and described what they understood it to mean. Both correctly interpreted it as a reminder, but found the initial brightness level too subtle in a well-lit kitchen.</span></li>
+      <li data-n="02"><span><strong>Approach & Interaction Scenario</strong> — participants simulated walking toward the device and taking a dose. The interaction-detected pulse was well-received: both described feeling like "the device knew what was happening," which matched the design intent.</span></li>
+      <li data-n="03"><span><strong>Missed Dose Scenario</strong> — participants viewed the pulsing escalation sequence. The caregiver found it appropriately urgent; the primary user found the pace comfortable and non-alarming — an important distinction that validated the gradual escalation approach.</span></li>
+    </ul>
+
+    <div class="cs-two-col" style="margin-top: 28px;">
+      <div class="cs-card">
+        <div class="cs-card-icon">✅</div>
+        <h3 class="cs-card-title">What worked</h3>
+        <p class="cs-card-text">Ambient signals were well-received and felt non-intrusive. The interaction confirmation pulse gave users confidence the system understood them. The physical prototype felt familiar and trustworthy — the form factor decision was validated.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">🔧</div>
+        <h3 class="cs-card-title">What needed iteration</h3>
+        <p class="cs-card-text">Clearer differentiation between "gentle glow" and "attention needed" states — addressed through brightness increase and amber gradient pulse. App terminology simplified after both participants found initial labels clinical and unclear.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Terminology iteration -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Iteration</p>
+    <h2 class="cs-section-title">Language is part of the design.</h2>
+    <p class="cs-text">Evaluation feedback flagged that the companion app's status terminology felt clinical and unfamiliar to both participants. Rather than dismissing this as a copy problem, I treated it as an information architecture failure — the labels weren't matching how users actually thought about their medication routine.</p>
+
+    <table class="term-table" aria-label="Terminology changes before and after iteration">
+      <thead>
+        <tr>
+          <th>Before</th>
+          <th>After</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>"Routine Time"</td><td>Scheduled Time</td></tr>
+        <tr><td>"Time Since Routine"</td><td>Time Elapsed</td></tr>
+        <tr><td>"Pending"</td><td>Awaiting Dose</td></tr>
+        <tr><td>"Late"</td><td>Taken Late</td></tr>
+      </tbody>
+    </table>
+
+    <p class="cs-text">Each change reduces cognitive distance between the label and the user's mental model of what's happening. "Awaiting Dose" is something Ellie understands immediately. "Pending" is something she might need to think about — and thinking is exactly the load this system is designed to reduce.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Reflections -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">What I Learned</p>
+    <h2 class="cs-section-title">Designing for cognitive load means designing for the hardest moment, not the average one.</h2>
+    <p class="cs-text">The biggest shift this project created in how I think about design is the concept of the "worst case interaction moment." For Ellie, that moment is 7am after a bad night's sleep, in a bright kitchen, wondering if she already took her medication. Every decision in Lumen Planner was stress-tested against that moment — does this still work when attention is low, fatigue is high, and cognitive resources are depleted?</p>
+    <p class="cs-text">It also deepened my understanding of Ubicomp as a design discipline distinct from conventional UX. Ubicomp isn't about screens that are embedded in objects — it's about computing that disappears into context. The goal isn't an interface users interact with. It's an environment that responds to them.</p>
+
+    <div class="cs-callout">The best assistive design doesn't feel like assistance. It feels like the world is just slightly more aware of you than it was before.</div>
+
+    <div class="cs-tags">
+      <span class="process-tag">Ubicomp</span>
+      <span class="process-tag">Calm Technology</span>
+      <span class="process-tag">Assistive Design</span>
+      <span class="process-tag">Physical Prototyping</span>
+      <span class="process-tag">Scenario-Based Testing</span>
+      <span class="process-tag">Figma</span>
+      <span class="process-tag">Inclusive Design</span>
+      <span class="process-tag">Healthcare UX</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Next project -->
+<div class="cs-next">
+  <div>
+    <p class="cs-next-label">Next Case Study</p>
+    <h2 class="cs-next-title">Mindful →</h2>
+  </div>
+  <a href="mindful.html" class="cs-next-link">
+    View Case Study
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">AE.</div>
+  <p class="footer-copy">&copy; 2025 Aiden Eichenour</p>
+  <div class="footer-links">
+    <a href="index.html#projects">Work</a>
+    <a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener">Behance</a>
+    <a href="mailto:aeichenour@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Noter — Project Spotlight · Aiden Eichenour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .cs-step-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+  .cs-step-list li { display: flex; align-items: flex-start; gap: 16px; font-size: 16px; color: var(--muted); line-height: 1.65; }
+  .cs-step-list li::before { content: attr(data-n); font-family: var(--font-display); font-weight: 800; font-size: 13px; color: var(--accent); background: rgba(91,140,255,0.1); border: 1px solid rgba(91,140,255,0.2); border-radius: 6px; padding: 3px 10px; margin-top: 1px; flex-shrink: 0; }
+  .cs-step-list li strong { color: var(--text); }
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--muted); line-height: 1.6; }
+  .checklist li::before { content: '✅'; flex-shrink: 0; font-size: 14px; margin-top: 2px; }
+  .checklist li strong { color: var(--text); }
+  .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
+  .tech-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .tech-card-icon { font-size: 24px; margin-bottom: 10px; }
+  .tech-card-name { font-family: var(--font-display); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .tech-card-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  @media (max-width: 700px) { .tech-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Aiden Eichenour — home">AE.</a>
+  <ul class="nav-links">
+    <li><a href="index.html#projects">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button type="button" class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <a href="index.html#projects">Work</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#contact">Let's Talk</a>
+</nav>
+
+<main id="main-content">
+<div class="cs-hero">
+  <div class="cs-hero-bg"></div>
+  <div class="cs-hero-blob" style="background: radial-gradient(ellipse at center, rgba(91,140,255,0.2) 0%, transparent 68%);"></div>
+  <div class="cs-hero-content">
+    <a href="index.html" class="cs-back">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Work
+    </a>
+    <p class="cs-eyebrow">Vibe Coding · Productivity · Voice Transcription</p>
+    <h1 class="cs-title">Noter</h1>
+    <p class="cs-subtitle">A browser-based speech-to-notecard app that turns live spoken words into editable, exportable notecards in real time — built entirely with browser-native APIs, no backend required.</p>
+    <div class="cs-meta-row">
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-value">Solo Developer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Type</span><span class="cs-meta-value">Vibe Coding</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Stack</span><span class="cs-meta-value">Web Speech API · jsPDF · html2canvas</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">GitHub</span><span class="cs-meta-value"><a href="https://github.com/aibreich/Noter" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">View Repo →</a></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero image -->
+<div style="background:var(--surface); border-bottom:1px solid var(--border);">
+  <div style="max-width:1100px; margin:0 auto; padding:0 64px;">
+    <img
+      src="https://framerusercontent.com/images/M9KcGI4kWeHxaZew20YQVrxssgU.png"
+      alt="Noter speech-to-notecard interface"
+      style="width:100%; display:block; border-radius:0 0 20px 20px; border:1px solid var(--border); border-top:none;"
+    />
+  </div>
+</div>
+
+<div class="cs-body">
+
+  <!-- Overview -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Overview</p>
+    <h2 class="cs-section-title">Note-taking during a lecture is a split-attention problem.</h2>
+    <p class="cs-text">When you're in a lecture or meeting, trying to type notes while listening means you're doing neither well. I wanted to build something that captured speech automatically so I could focus on understanding rather than transcribing — and that turned each natural pause in speech into a discrete, editable notecard rather than a wall of text.</p>
+    <p class="cs-text">The resulting app uses the Web Speech API for continuous transcription, organizes output into individual notecards per speech segment, tracks live session metrics, and lets you export the whole session as a formatted PDF. Everything runs client-side with no server, no account, and no data leaving your browser.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- The Problem -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">The Problem</p>
+    <h2 class="cs-section-title">Transcription tools exist. None of them think in notecards.</h2>
+    <p class="cs-text">Most transcription tools produce a single continuous stream of text — useful as a record, but hard to review, edit, or turn into something shareable. I wanted the structure of notecards (discrete, skimmable, individually editable) with the capture speed of speech recognition.</p>
+
+    <div class="cs-two-col" style="margin-top:28px;">
+      <div class="cs-card">
+        <div class="cs-card-icon">📝</div>
+        <h3 class="cs-card-title">The structure problem</h3>
+        <p class="cs-card-text">A wall of auto-transcribed text requires heavy post-processing to be useful. I needed something that automatically chunked speech into logical units as it happened, without requiring manual editing after the fact.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">📤</div>
+        <h3 class="cs-card-title">The export problem</h3>
+        <p class="cs-card-text">If notes can't leave the app, they're not really notes. The export needed to be clean, readable, and include metadata — timestamps, word counts, session duration — without requiring a backend to generate it.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Tech Decisions -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Technical Architecture</p>
+    <h2 class="cs-section-title">Four APIs doing the work of a full backend.</h2>
+    <p class="cs-text">The biggest constraint — and most interesting challenge — was achieving server-level features entirely in the browser. Transcription, PDF generation, canvas capture, and session persistence all needed to work without any external service.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-icon">🎙️</div>
+        <div class="tech-card-name">Web Speech API</div>
+        <div class="tech-card-desc">Drives continuous real-time transcription. The <code style="font-family:monospace; font-size:11px;">onresult</code> event fires as speech segments complete, which triggers automatic notecard creation. Managing interim vs final results was the trickiest part.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-icon">📄</div>
+        <div class="tech-card-name">jsPDF</div>
+        <div class="tech-card-desc">Generates the PDF export entirely client-side. I structured the output with session metadata in the header, one notecard per block, and timestamps alongside each entry for easy review.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-icon">🖼️</div>
+        <div class="tech-card-name">html2canvas</div>
+        <div class="tech-card-desc">Captures the rendered notecard layout as a canvas image before handing off to jsPDF — preserving formatting and visual structure in the exported document rather than just raw text.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-icon">💾</div>
+        <div class="tech-card-name">Client-Side State</div>
+        <div class="tech-card-desc">All session data lives in memory during use. No localStorage dependency — each session is intentionally ephemeral unless exported, which felt right for the use case of lecture or meeting notes.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Features -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Features</p>
+    <h2 class="cs-section-title">Designed around one core flow: speak, review, export.</h2>
+
+    <ul class="cs-step-list">
+      <li data-n="01"><span><strong>Live transcription to notecards</strong> — as you speak, each speech segment becomes its own card. Natural pauses define the boundaries, so cards map roughly to complete thoughts rather than arbitrary time slices.</span></li>
+      <li data-n="02"><span><strong>Inline editing</strong> — every notecard is immediately editable after creation. Mis-transcriptions, filler words, or incomplete sentences can be fixed before export without interrupting the session.</span></li>
+      <li data-n="03"><span><strong>Live session metrics</strong> — total word count, character count, and card count update continuously as you speak. Useful feedback for pacing in lectures and presentations.</span></li>
+      <li data-n="04"><span><strong>PDF export via jsPDF + html2canvas</strong> — exports the full session as a formatted document with timestamps, word counts, and all notecard content. Designed to be shareable without further editing.</span></li>
+      <li data-n="05"><span><strong>Session management</strong> — each session is timestamped from start. The entire session can be cleared and restarted without a page reload.</span></li>
+    </ul>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Challenges -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Challenges</p>
+    <h2 class="cs-section-title">Continuous streaming transcription is messier than it looks.</h2>
+    <p class="cs-text">The Web Speech API fires two types of results — interim (still being processed) and final (committed). Interim results update rapidly and shouldn't create notecards; final results should. Getting that distinction right — and handling the edge cases where speech recognition restarts mid-sentence or returns a final result that's actually still partial — took significantly more work than the initial implementation.</p>
+    <p class="cs-text">The PDF export pipeline had its own challenges. <code style="font-family:monospace; background:var(--surface2); padding:2px 7px; border-radius:4px; font-size:14px;">html2canvas</code> captures the DOM at a point in time, which means any late-rendering fonts or images can produce blank areas in the export. Preloading fonts and ensuring all content was fully rendered before triggering the capture solved it — but finding that was a few hours of debugging.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Reflections -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">What I Learned</p>
+    <h2 class="cs-section-title">Designing for real-time input requires thinking differently.</h2>
+    <p class="cs-text">Most UI design assumes the user is in control of input timing — they type, click, or tap when they're ready. With live speech transcription, input arrives continuously and unpredictably. Designing a UI that handles that gracefully — displaying interim results without flickering, creating cards at the right moments, staying visually calm while data is streaming — required a different mental model than standard form-based interfaces.</p>
+    <p class="cs-text">This project also gave me real experience with multi-library integration at the browser level. Coordinating jsPDF and html2canvas — libraries that each have their own async model — taught me to think carefully about execution order and render state in ways that pure vanilla projects don't surface.</p>
+
+    <div class="cs-callout">Good real-time UX feels inevitable — like the interface already knew what you were going to say.</div>
+
+    <div class="cs-tags">
+      <span class="process-tag">Web Speech API</span>
+      <span class="process-tag">jsPDF</span>
+      <span class="process-tag">html2canvas</span>
+      <span class="process-tag">Real-Time UI</span>
+      <span class="process-tag">Client-Side Architecture</span>
+      <span class="process-tag">PDF Export</span>
+      <span class="process-tag">Accessibility</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Next project -->
+<div class="cs-next">
+  <div>
+    <p class="cs-next-label">Back to Case Studies</p>
+    <h2 class="cs-next-title">Mindful →</h2>
+  </div>
+  <a href="mindful.html" class="cs-next-link">
+    View Case Study
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">AE.</div>
+  <p class="footer-copy">&copy; 2025 Aiden Eichenour</p>
+  <div class="footer-links">
+    <a href="index.html#projects">Work</a>
+    <a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener">Behance</a>
+    <a href="/cdn-cgi/l/email-protection#87e6eee5f5e2eee4efc7eef2a9e2e3f2">Email</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

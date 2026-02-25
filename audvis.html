@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AudVis — Project Spotlight · Aiden Eichenour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .cs-step-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+  .cs-step-list li { display: flex; align-items: flex-start; gap: 16px; font-size: 16px; color: var(--muted); line-height: 1.65; }
+  .cs-step-list li::before { content: attr(data-n); font-family: var(--font-display); font-weight: 800; font-size: 13px; color: var(--accent); background: rgba(91,140,255,0.1); border: 1px solid rgba(91,140,255,0.2); border-radius: 6px; padding: 3px 10px; margin-top: 1px; flex-shrink: 0; }
+  .cs-step-list li strong { color: var(--text); }
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--muted); line-height: 1.6; }
+  .checklist li::before { content: '✅'; flex-shrink: 0; font-size: 14px; margin-top: 2px; }
+  .checklist li strong { color: var(--text); }
+  .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
+  .tech-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .tech-card-icon { font-size: 24px; margin-bottom: 10px; }
+  .tech-card-name { font-family: var(--font-display); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .tech-card-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .viz-modes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  .viz-mode { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; display: flex; align-items: flex-start; gap: 12px; }
+  .viz-mode-icon { font-size: 20px; flex-shrink: 0; }
+  .viz-mode-name { font-family: var(--font-display); font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .viz-mode-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  @media (max-width: 700px) { .tech-grid, .viz-modes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Aiden Eichenour — home">AE.</a>
+  <ul class="nav-links">
+    <li><a href="index.html#projects">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button type="button" class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <a href="index.html#projects">Work</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#contact">Let's Talk</a>
+</nav>
+
+<main id="main-content">
+<div class="cs-hero">
+  <div class="cs-hero-bg"></div>
+  <div class="cs-hero-blob" style="background: radial-gradient(ellipse at center, rgba(91,140,255,0.22) 0%, transparent 68%);"></div>
+  <div class="cs-hero-content">
+    <a href="index.html" class="cs-back">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Work
+    </a>
+    <p class="cs-eyebrow">Vibe Coding · Creative Tech · Audio Visualization</p>
+    <h1 class="cs-title">AudVis</h1>
+    <p class="cs-subtitle">A real-time audio visualizer built on HTML5 Canvas and the Web Audio API — supporting mic input, file upload, and streaming links with multiple visualization modes, all in vanilla JavaScript.</p>
+    <div class="cs-meta-row">
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-value">Solo Developer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Type</span><span class="cs-meta-value">Vibe Coding</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Stack</span><span class="cs-meta-value">HTML5 Canvas · Web Audio API · JS</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">GitHub</span><span class="cs-meta-value"><a href="https://github.com/aibreich/audVis" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">View Repo →</a></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero image -->
+<div style="background:var(--surface); border-bottom:1px solid var(--border);">
+  <div style="max-width:1100px; margin:0 auto; padding:0 64px;">
+    <img
+      src="https://framerusercontent.com/images/nvvdOpHsQnslyk4reoVQjszRTnI.png"
+      alt="AudVis audio visualizer interface"
+      style="width:100%; display:block; border-radius:0 0 20px 20px; border:1px solid var(--border); border-top:none;"
+    />
+  </div>
+</div>
+
+<div class="cs-body">
+
+  <!-- Overview -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Overview</p>
+    <h2 class="cs-section-title">Sound you can see, built entirely in the browser.</h2>
+    <p class="cs-text">AudVis started as a challenge to myself: could I build something visually impressive using only browser-native APIs, zero libraries, and zero canvas frameworks? The answer was yes — and the process taught me more about real-time graphics rendering and audio processing than any tutorial could.</p>
+    <p class="cs-text">The result is an interactive audio visualizer that accepts sound from three different sources, transforms raw frequency data via FFT analysis, and renders it in real time across four distinct visualization modes — all running at smooth framerates in a single HTML file.</p>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- The Challenge -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">The Challenge</p>
+    <h2 class="cs-section-title">Real-time graphics and audio processing are unforgiving.</h2>
+    <p class="cs-text">Canvas animations have no safety net. A poorly optimized render loop drops frames immediately and visibly. Combining that with live audio analysis — where the data updates 60 times per second — meant every decision had a direct performance cost.</p>
+
+    <div class="cs-two-col" style="margin-top:28px;">
+      <div class="cs-card">
+        <div class="cs-card-icon">🎵</div>
+        <h3 class="cs-card-title">Audio pipeline complexity</h3>
+        <p class="cs-card-text">Each input source — microphone, file, stream — needs its own routing through the Web Audio API graph. Building a unified interface over three different source types without redundant code was the first real design challenge.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-icon">🖼️</div>
+        <h3 class="cs-card-title">Canvas performance</h3>
+        <p class="cs-card-text">Clearing and redrawing the entire canvas every frame is expensive. I had to learn which operations to batch, when to use <code style="font-family:monospace; font-size:12px;">requestAnimationFrame</code> vs setInterval, and how to avoid unnecessary state changes.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Tech Decisions -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Technical Architecture</p>
+    <h2 class="cs-section-title">Web Audio API does the heavy lifting.</h2>
+    <p class="cs-text">The Web Audio API exposes an <code style="font-family:monospace; background:var(--surface2); padding:2px 7px; border-radius:4px; font-size:14px;">AnalyserNode</code> that performs Fast Fourier Transform (FFT) analysis on live audio, returning frequency-domain data as a byte array. That array is what drives every visual — each bar, wave, and particle maps directly to a frequency bucket.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-icon">🔊</div>
+        <div class="tech-card-name">Web Audio API</div>
+        <div class="tech-card-desc">Core audio graph: source nodes feed into an AnalyserNode that extracts frequency and waveform data at configurable FFT sizes. Higher FFT = more frequency resolution, higher CPU cost.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-icon">🎨</div>
+        <div class="tech-card-name">HTML5 Canvas 2D</div>
+        <div class="tech-card-desc">All visuals rendered via the Canvas 2D context. requestAnimationFrame drives the loop, keeping rendering in sync with the display refresh rate without manual timing logic.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-icon">🎤</div>
+        <div class="tech-card-name">MediaStream API</div>
+        <div class="tech-card-desc">getUserMedia() captures microphone input as a MediaStream, which is then routed into the Web Audio graph — the same pipeline as a file or stream source.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-icon">⚡</div>
+        <div class="tech-card-name">Vanilla JS — no deps</div>
+        <div class="tech-card-desc">Zero external libraries. Every animation, every control, every audio routing decision is hand-written. The constraint made me understand the APIs far more deeply than abstracted equivalents would have.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Visualization Modes -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">Visualization Modes</p>
+    <h2 class="cs-section-title">Four ways to see the same sound.</h2>
+    <p class="cs-text">Each mode uses the same underlying frequency data but visualizes it with a completely different algorithm. Building each one from scratch deepened my understanding of the data itself — how frequency buckets cluster, how amplitude maps to perceived loudness, how time-domain vs frequency-domain data behaves.</p>
+
+    <div class="viz-modes">
+      <div class="viz-mode">
+        <div class="viz-mode-icon">📊</div>
+        <div>
+          <div class="viz-mode-name">Frequency Bars</div>
+          <div class="viz-mode-desc">Classic equalizer-style bars mapped to frequency buckets. Height = amplitude. Simple, readable, immediately satisfying.</div>
+        </div>
+      </div>
+      <div class="viz-mode">
+        <div class="viz-mode-icon">〰️</div>
+        <div>
+          <div class="viz-mode-name">Waveform</div>
+          <div class="viz-mode-desc">Time-domain rendering showing the raw audio signal as it moves through time. More musical-feeling than frequency bars.</div>
+        </div>
+      </div>
+      <div class="viz-mode">
+        <div class="viz-mode-icon">⭕</div>
+        <div>
+          <div class="viz-mode-name">Circular</div>
+          <div class="viz-mode-desc">Frequency bars projected radially from a centre point. Rotation and scaling driven by overall amplitude — the whole ring pulses with the beat.</div>
+        </div>
+      </div>
+      <div class="viz-mode">
+        <div class="viz-mode-icon">✨</div>
+        <div>
+          <div class="viz-mode-name">Particle System</div>
+          <div class="viz-mode-desc">Particles emitted and moved based on frequency energy. Velocity, size, and opacity all respond to the audio — the hardest mode to tune, the most interesting to watch.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider" />
+
+  <!-- Reflections -->
+  <div class="cs-section reveal">
+    <p class="cs-section-label">What I Learned</p>
+    <h2 class="cs-section-title">Performance is a design decision.</h2>
+    <p class="cs-text">This project changed how I think about front-end work. Every line of code in a render loop has a cost that shows up visibly and immediately. That feedback loop — write something, see it stutter, figure out why — made performance optimization feel less like an optimization and more like a design constraint I had to work within from the start.</p>
+    <p class="cs-text">I also developed a much deeper appreciation for what browser APIs can actually do. The Web Audio API's node graph architecture is genuinely elegant — routing audio through composable nodes mirrors how physical signal chains work, which made understanding it feel intuitive once it clicked.</p>
+
+    <div class="cs-callout">Building with browser-native APIs means understanding exactly what the platform can do — not just what a framework exposes.</div>
+
+    <div class="cs-tags">
+      <span class="process-tag">Web Audio API</span>
+      <span class="process-tag">HTML5 Canvas</span>
+      <span class="process-tag">FFT Analysis</span>
+      <span class="process-tag">requestAnimationFrame</span>
+      <span class="process-tag">Vanilla JavaScript</span>
+      <span class="process-tag">Performance Optimization</span>
+      <span class="process-tag">Responsive Design</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Next project -->
+<div class="cs-next">
+  <div>
+    <p class="cs-next-label">Next Vibe Coding Project</p>
+    <h2 class="cs-next-title">Noter →</h2>
+  </div>
+  <a href="noter.html" class="cs-next-link">
+    View Project
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">AE.</div>
+  <p class="footer-copy">&copy; 2025 Aiden Eichenour</p>
+  <div class="footer-links">
+    <a href="index.html#projects">Work</a>
+    <a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener">Behance</a>
+    <a href="/cdn-cgi/l/email-protection#d1b0b8b3a3b4b8b2b991b8a4ffb4b5a4">Email</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>
