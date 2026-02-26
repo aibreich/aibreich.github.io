@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Security Headers (meta equivalents) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://framerusercontent.com https://mir-s3-cdn-cf.behance.net https://a5.behance.net https://pps.services.adobe.com; frame-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <!-- SEO: Primary -->
   <meta name="description" content="A context-aware smart weekly medicine organizer for older adults using ambient LED cues and sensor-based awareness. Ubicomp and assistive design case study by Aiden Eichenour." />
   <meta name="author" content="Aiden Eichenour" />
@@ -104,7 +109,7 @@
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#process">Process</a></li>
     <li><a href="index.html#contact" class="nav-cta">Let's Talk</a></li>
-    <li><a href="Eichenour_Aiden_Resume.pdf" target="_blank" rel="noopener" class="resume-btn" aria-label="Download Resume PDF">
+    <li><a href="Eichenour_Aiden_Resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-btn" aria-label="Download Resume PDF">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9M4 6l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Résumé
     </a></li>
@@ -137,7 +142,7 @@
       <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-value">Solo Designer & Researcher</span></div>
       <div class="cs-meta-item"><span class="cs-meta-label">Type</span><span class="cs-meta-value">Ubicomp Case Study</span></div>
       <div class="cs-meta-item"><span class="cs-meta-label">Tools</span><span class="cs-meta-value">Figma · Procreate · Physical Prototype</span></div>
-      <div class="cs-meta-item"><span class="cs-meta-label">Published</span><span class="cs-meta-value"><a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">View on Behance →</a></span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Published</span><span class="cs-meta-value"><a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none;">View on Behance →</a></span></div>
     </div>
   </div>
 </div>
@@ -383,7 +388,7 @@
   <p class="footer-copy">&copy; 2025 Aiden Eichenour</p>
   <div class="footer-links">
     <a href="index.html#projects">Work</a>
-    <a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener">Behance</a>
+    <a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener noreferrer">Behance</a>
     <a href="/cdn-cgi/l/email-protection#117074787279747f7e646351767c70787d3f727e7c">Email</a>
   </div>
 </footer>

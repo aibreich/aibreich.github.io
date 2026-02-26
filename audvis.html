@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Security Headers (meta equivalents) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://framerusercontent.com https://mir-s3-cdn-cf.behance.net https://a5.behance.net https://pps.services.adobe.com; frame-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <!-- SEO: Primary -->
   <meta name="description" content="A real-time audio visualizer built on HTML5 Canvas and the Web Audio API with four visualization modes. Vanilla JavaScript, no dependencies." />
   <meta name="author" content="Aiden Eichenour" />
@@ -111,7 +116,7 @@
       <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-value">Solo Developer</span></div>
       <div class="cs-meta-item"><span class="cs-meta-label">Type</span><span class="cs-meta-value">Vibe Coding</span></div>
       <div class="cs-meta-item"><span class="cs-meta-label">Stack</span><span class="cs-meta-value">HTML5 Canvas · Web Audio API · JS</span></div>
-      <div class="cs-meta-item"><span class="cs-meta-label">GitHub</span><span class="cs-meta-value"><a href="https://github.com/aibreich/audVis" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">View Repo →</a></span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">GitHub</span><span class="cs-meta-value"><a href="https://github.com/aibreich/audVis" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none;">View Repo →</a></span></div>
     </div>
   </div>
 </div>
@@ -274,7 +279,7 @@
   <p class="footer-copy">&copy; 2025 Aiden Eichenour</p>
   <div class="footer-links">
     <a href="index.html#projects">Work</a>
-    <a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener">Behance</a>
+    <a href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer" target="_blank" rel="noopener noreferrer">Behance</a>
     <a href="/cdn-cgi/l/email-protection#d1b0b8b3a3b4b8b2b991b8a4ffb4b5a4">Email</a>
   </div>
 </footer>

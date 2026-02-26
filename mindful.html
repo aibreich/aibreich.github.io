@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Security Headers (meta equivalents) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://framerusercontent.com https://mir-s3-cdn-cf.behance.net https://a5.behance.net https://pps.services.adobe.com; frame-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <!-- SEO: Primary -->
   <meta name="description" content="A student reflection and planning app designed through research with 10 discovery interviews and tested with 35 participants. Resulted in 21% faster task completion and 100% success rate. Case study by Aiden Eichenour." />
   <meta name="author" content="Aiden Eichenour" />
@@ -771,8 +776,7 @@
         <a href="index.html#projects">Work</a>
         <a
           href="https://www.behance.net/gallery/240278629/Lumen-Planner-A-smart-weekly-medicine-organizer"
-          target="_blank"
-          >Behance</a
+          target="_blank" rel="noopener noreferrer">Behance</a
         >
         <a href="/cdn-cgi/l/email-protection#53323a3121363a303b133a267d363726"
           >Email</a
