@@ -122,6 +122,7 @@
       .hero-eyebrow {
         display: inline-flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 10px;
         font-size: clamp(10px, 1.2vw, 11px);
         font-weight: 600;
@@ -130,6 +131,7 @@
         color: var(--muted);
         margin-bottom: clamp(24px, 4vw, 36px);
         animation: fadeIn 0.6s 0.1s both;
+        max-width: 100%;
       }
       .eyebrow-dot {
         width: 8px;
@@ -172,13 +174,14 @@
         font-family: var(--font-display);
         font-size: clamp(44px, 8.5vw, 120px);
         font-weight: 800;
-        line-height: 0.93;
+        line-height: 1.05;
         letter-spacing: -0.03em;
         margin: 0;
       }
       .hero-title .line {
         display: block;
-        overflow: hidden;
+        overflow: visible;
+        padding-bottom: 0.06em;
       }
       .hero-title .line span {
         display: block;
@@ -844,7 +847,7 @@
 
       @media (max-width: 767px) {
         .hero-title {
-          font-size: clamp(38px, 11vw, 72px);
+          font-size: clamp(28px, 8.5vw, 54px);
         }
         .hero-eyebrow {
           font-size: 10px;
@@ -910,6 +913,7 @@
         }
         .contact-btn {
           justify-content: center;
+          white-space: normal;
         }
         .section-title {
           font-size: clamp(26px, 7vw, 48px);
@@ -919,13 +923,36 @@
 
       @media (max-width: 400px) {
         .hero-title {
-          font-size: clamp(32px, 10vw, 52px);
+          font-size: clamp(26px, 8vw, 40px);
         }
         .about-mini-stats {
           flex-direction: column;
         }
         .mini-stat {
           padding: 12px;
+        }
+        /* Remove outline on "experiences" — fills solid on narrow screens */
+        .outline-text {
+          -webkit-text-stroke: 0;
+          color: var(--text);
+        }
+        /* Fill "something." solid white — outline disappears on narrow screens */
+        .contact-title .outline {
+          -webkit-text-stroke: 0;
+          color: #fff;
+        }
+      }
+
+      @media (min-width: 401px) and (max-width: 430px) {
+        /* Remove outline on "experiences" */
+        .outline-text {
+          -webkit-text-stroke: 0;
+          color: var(--text);
+        }
+        /* Fill "something." solid white */
+        .contact-title .outline {
+          -webkit-text-stroke: 0;
+          color: #fff;
         }
       }
     </style>
@@ -1727,10 +1754,7 @@
           about what you're building.
         </p>
         <div class="contact-links">
-          <a
-            href="mailto:aeichenour@gmail.com"
-            class="contact-btn"
-          >
+          <a href="/cdn-cgi/l/email-protection#7d1c18141e15181312080f3d1a101c1411531e1210" class="contact-btn">
             <svg
               width="16"
               height="16"
@@ -1817,8 +1841,7 @@
         <a href="https://medium.com/@aideneichenour" target="_blank" rel="noopener noreferrer"
           >Medium</a
         >
-        <a href="mailto:aeichenour@gmail.com"
-          >Email</a
+        <a href="mailto:aeichenour@gmail.com">Email</a
         >
       </div>
     </footer>
